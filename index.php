@@ -42,8 +42,18 @@ session_status();
                         </div>
 
                         <div class="col-12 mb-3">
-                            <input type="checkbox" class="form-check-input" id="rememberMe">
-                            <label for="rememberMe" class="form-check-label">remember me</label>
+                            <div class="row">
+
+                                <div class="col-6 mb-3">
+                                    <input type="checkbox" class="form-check-input" id="rememberMe">
+                                    <label for="rememberMe" class="form-check-label">remember me</label>
+                                </div>
+
+                                <div class="col-6 mb-3 text-end">
+                                    <a href="forgot-password.php" class="text-decoration-none link-secondary">Forgot Password?</a>
+                                </div>
+
+                            </div>
                         </div>
 
                         <div class="d-grid mb-3">
