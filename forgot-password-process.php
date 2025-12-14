@@ -1,33 +1,57 @@
 <?php
 
+require("connection.php");
+
+require "SMTP.php";
+require "PHPMailer.php";
+require "Exception.php";
+
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\SMTP;
-use PHPMailer\PHPMailer\Exception;
 
-require "mail/PHPMailer.php";
-require "mail/SMTP.php";
-require "mail/Exception.php";
+$email = $_POST["email"];
 
-$mail = new PHPMailer(true);
+if (empty($email)) {
+    echo ("Please enter your Email Address.");
+} else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo ("Not a valid Email Address.");
+} else {
+    $rs = DataBase::search("SELECT * FROM `users` WHERE `email` = '$email'");
+    $num = $rs->num_rows;
+    if ($num == 1) {
+        $row = $rs->fetch_assoc();
 
-try {
-    $mail->isSMTP();
-    $mail->Host = 'smtp.example.com';
-    $mail->SMTPAuth = true;
-    $mail->Username = 'user@example.com';
-    $mail->Password = 'secret';
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-    $mail->Port = 465;
+        if ($row["status_id"] == 1) {
 
-    $mail->setFrom('from@example.com', 'Mailer');
-    $mail->addAddress('ellen@example.com');
+            $code = uniqid();
+            DataBase::iud("UPDATE `users` SET `v_code` = '$code' WHERE `email` = '$email'");
 
-    $mail->isHTML(true);
-    $mail->Subject = 'Here is the subject';
-    $mail->Body = 'This is the HTML message body <b>in bold!</b>';
+            $mail = new PHPMailer;
+            $mail->IsSMTP();
+            $mail->Host = 'smtp.gmail.com';
+            $mail->SMTPAuth = true;
+            $mail->Username = 'r5rx5600ma@gmail.com';
+            $mail->Password = 'pxwl ervg qchh giyg';
+            $mail->SMTPSecure = 'ssl';
+            $mail->Port = 465;
+            $mail->setFrom('r5rx5600ma@gmail.com', 'Reset Password');
+            $mail->addReplyTo('r5rx5600ma@gmail.com', 'Reset Password');
+            $mail->addAddress($email);
+            $mail->isHTML(true);
+            $mail->Subject = 'BUYhere VERIFICATION CODE';
+            $bodyContent = '************************** ' . $code . ' **************************';
+            $bodyContent .= '******************';
+            $mail->Body    = $bodyContent;
 
-    $mail->send();
-    echo 'Message has been sent';
-} catch (Exception $e) {
-    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+            if (!$mail->send()) {
+                echo 'Message could not be sent.';
+                echo 'Mailer Error: ' . $mail->ErrorInfo;
+            } else {
+                echo ("sent");
+            }
+        } else {
+            echo ("Account is not active.");
+        }
+    } else {
+        echo ("Email not found.");
+    }
 }
