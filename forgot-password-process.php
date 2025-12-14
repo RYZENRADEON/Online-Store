@@ -37,7 +37,7 @@ if (empty($email)) {
             $mail->addReplyTo('r5rx5600ma@gmail.com', 'Reset Password');
             $mail->addAddress($email);
             $mail->isHTML(true);
-            $mail->Subject = 'BUYhere VERIFICATION CODE';
+            $mail->Subject = 'ONLINE STORE VERIFICATION CODE';
             $bodyContent = '************************** ' . $code . ' **************************';
             $bodyContent .= '******************';
             $mail->Body    = $bodyContent;
