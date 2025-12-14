@@ -70,7 +70,6 @@ const signIn = async () => {
     const email = document.getElementById('siEmail');
     const password = document.getElementById('siPassword');
     const rememberMe = document.getElementById('rememberMe');
-    // alert(rememberMe.checked);
 
     const form = new FormData();
 

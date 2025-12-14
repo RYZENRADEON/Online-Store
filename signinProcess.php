@@ -23,7 +23,7 @@ if (empty($email)) {
         $user = $rs->fetch_assoc();
         if ($user["status"] == 1) {
 
-            session_start();
+            session_start();// session start
             $_SESSION["user"] = $user;
 
             if ($_POST['rememberMe'] == "true") {
