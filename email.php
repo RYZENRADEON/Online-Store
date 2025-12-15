@@ -1,5 +1,5 @@
 <table style="width: 100%; font-family: sans-serif;">
-    <tbody></tbody>
+    <tbody> 
     <tr>
         <td align="center">
 
@@ -18,7 +18,7 @@
                         <div>
                             <a href="#" style="display: inline-block; background-color: blue; color: white; border-radius: 8px; padding: 10px 20px; text-decoration: none;"><span>Reset Password</span></a>
                         </div>
-                        <p style="margin-top: 24px;">If you did't request this, please ignore this email.</p>
+                        <p style="margin-top: 24px;">If you didn't request this, please ignore this email.</p>
                     </td>
                 </tr>
 
