@@ -10,7 +10,6 @@ session_status();
     <title>Sign In | Online Store</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="bootstrap.css">
-    <script src="script.js" defer></script>
 </head>
 
 <body>
@@ -50,7 +49,7 @@ session_status();
                                 </div>
 
                                 <div class="col-6 mb-3 text-end">
-                                    <a href="forgot-password.php" class="text-decoration-none link-secondary">Forgot Password?</a>
+                                    <a href="forgotPassword.php" class="text-decoration-none link-secondary">Forgot Password?</a>
                                 </div>
 
                             </div>
@@ -125,6 +124,8 @@ session_status();
         </div>
 
     </div>
+
+    <script src="script.js"></script>
 </body>
 
 </html>
