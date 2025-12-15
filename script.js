@@ -2,14 +2,20 @@ const togglesignup = document.getElementById('togglesignup');
 const togglesignin = document.getElementById('togglesignin');
 const signupBtn = document.getElementById('signupBtn');
 const signinBtn = document.getElementById('signinBtn');
+const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
+const resetPasswordBtn = document.getElementById('resetPasswordBtn');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
     document.getElementById('signinBox').classList.toggle('d-none');
 }
 
-togglesignup.addEventListener('click', changeview);
-togglesignin.addEventListener('click', changeview);
+if (togglesignup) {
+    togglesignup.addEventListener('click', changeview);
+}
+if (togglesignin) {
+    togglesignin.addEventListener('click', changeview);
+}
 
 const formSubmitHandler = (form, direction, method, isAsync) => {
     return new Promise((resolve, reject) => {
@@ -64,7 +70,9 @@ const signUp = async () => {
     }
 }
 
-signupBtn.addEventListener('click', signUp);
+if (signupBtn) {
+    signupBtn.addEventListener('click', signUp);
+}
 
 const signIn = async () => {
     const email = document.getElementById('siEmail');
@@ -95,7 +103,58 @@ const signIn = async () => {
         }
     } catch (error) {
         alert(`Error: ${error}`);
-    }    
+    }
+}
+if (signinBtn) {
+    signinBtn.addEventListener('click', signIn);
 }
 
-signinBtn.addEventListener('click', signIn);
+
+const forgotPassword = async () => {
+    const email = document.getElementById("fpEmail");
+
+    const form = new FormData();
+    form.append('email', email.value);
+
+    const direction = 'forgotPasswordProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+
+    const responseText = await formSubmitHandler(form, direction, method, isAsync);
+    if (responseText.trim() == "sent") {
+        alert('Password reset link sent to your email. Please check your inbox.');
+    } else {
+        alert('Error: ' + responseText);
+    }
+}
+
+if (forgotPasswordBtn) {
+    forgotPasswordBtn.addEventListener('click', forgotPassword);
+}
+
+const resetPassword =async () => {
+    const password = document.getElementById("newPassword");
+    const confirmPassword = document.getElementById("confirmPassword");
+    const vcode = document.getElementById("vcode");
+    const form = new FormData();
+    
+    form.append('password', password.value);
+    form.append('confirmPassword', confirmPassword.value);
+    form.append('vcode', vcode.value);
+    
+    const direction = 'resetPasswordProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+    
+    const responseText = await formSubmitHandler(form, direction, method, isAsync);
+    if (responseText.trim() == "success") {
+        alert('Password has been reset successfully.');
+        window.location.href = "index.php";
+    } else {
+        alert('Error: ' + responseText);
+    }
+}
+
+if(resetPasswordBtn) {
+    resetPasswordBtn.addEventListener('click', resetPassword);
+}
