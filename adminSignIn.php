@@ -14,7 +14,7 @@
     <!-- ADMIN SIGN IN BOX -->
     <div class="container">
         <div class="row vh-100 d-flex justify-content-center align-items-center">
-            <div class="col-10 col-lg-4" id="signinBox">
+            <div class="col-10 col-lg-4">
                 <div class="row card">
                     <div class="card-body">
 
@@ -39,7 +39,7 @@
                         </div>
 
                         <div class="d-grid mb-3">
-                            <button class="btn btn-secondary" id="signinBtn">Sign In</button>
+                            <button class="btn btn-secondary" id="adSigninBtn">Sign In</button>
                         </div>
 
                     </div>
