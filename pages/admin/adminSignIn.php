@@ -6,8 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Sigh In | Online Store</title>
 
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="icon" href="../../assets/images/logo/logo01.png">
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.css">
 </head>
 
 <body>
@@ -49,7 +50,7 @@
     </div>
     <!-- ADMIN SIGN IN BOX -->
 
-    <script src="assets/js/script.js"></script>
+    <script src="../../assets/js/script.js"></script>
 </body>
 
 </html>
