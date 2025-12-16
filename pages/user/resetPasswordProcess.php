@@ -1,5 +1,5 @@
 <?php
-include 'connection.php';
+include '../../config/connection.php';
 
 $password = $_POST["password"];
 $confirmPassword = $_POST["confirmPassword"];

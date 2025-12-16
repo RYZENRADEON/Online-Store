@@ -17,11 +17,12 @@ if (togglesignin) {
     togglesignin.addEventListener('click', changeview);
 }
 
+
 const formSubmitHandler = (form, direction, method, isAsync) => {
     return new Promise((resolve, reject) => {
         const req = new XMLHttpRequest();
         req.open(method, direction, isAsync);
-
+        
         req.onload = () => {
             if (req.status >= 200 && req.status < 300) {
                 resolve(req.responseText);
@@ -29,7 +30,7 @@ const formSubmitHandler = (form, direction, method, isAsync) => {
                 reject(`HTTP ${req.status}: ${req.statusText}`);
             }
         };
-
+        
         req.onerror = () => reject('Network error');
         req.send(form);
     });
@@ -50,7 +51,7 @@ const signUp = async () => {
     form.append('email', email.value);
     form.append('password', password.value);
 
-    const direction = "signupProcess.php";
+    const direction = '/Online-Store/pages/user/signupProcess.php';
     const method = "POST";
     const isAsync = true;
 
@@ -85,7 +86,7 @@ const signIn = async () => {
     form.append('password', password.value);
     form.append('rememberMe', rememberMe.checked);
 
-    const direction = "signinProcess.php";
+    const direction = "/Online-Store/pages/user/signinProcess.php";
     const method = "POST";
     const isAsync = true;
 
@@ -93,7 +94,7 @@ const signIn = async () => {
         const responseText = await formSubmitHandler(form, direction, method, isAsync);
         if (responseText.trim() === "success") {
             alert("Sign In Successful");
-            window.location.href = "home.php";
+            window.location.href = "/Online-Store/pages/user/home.php";
         }
         else {
             const errorMsgDiv1 = document.querySelector('.errorMsgDiv1');
@@ -116,7 +117,7 @@ const forgotPassword = async () => {
     const form = new FormData();
     form.append('email', email.value);
 
-    const direction = 'forgotPasswordProcess.php';
+    const direction = '/Online-Store/pages/user/forgotPasswordProcess.php';
     const method = 'POST';
     const isAsync = true;
 
@@ -142,14 +143,14 @@ const resetPassword =async () => {
     form.append('confirmPassword', confirmPassword.value);
     form.append('vcode', vcode.value);
     
-    const direction = 'resetPasswordProcess.php';
+    const direction = '/Online-Store/pages/user/resetPasswordProcess.php';
     const method = 'POST';
     const isAsync = true;
     
     const responseText = await formSubmitHandler(form, direction, method, isAsync);
     if (responseText.trim() == "success") {
         alert('Password has been reset successfully.');
-        window.location.href = "index.php";
+        window.location.href = "/Online-Store/index.php";
     } else {
         alert('Error: ' + responseText);
     }

@@ -1,13 +1,13 @@
 <?php
-include 'connection.php';
+include '../../config/connection.php';
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'PHPMailer.php';
-require 'SMTP.php';
-require 'Exception.php';
+require '../../includes/PHPMailer.php';
+require '../../includes/SMTP.php';
+require '../../includes/Exception.php';
 
 $email = $_POST['email'];
 
@@ -59,7 +59,7 @@ if (empty($email)) {
                                     <h1 style="font-size: 25px; font-weight: bold; line-height: 45px;">Reset Your Password</h1>
                                     <p style="margin-bottom: 24px;">To reset your password, please click the link below:</p>
                                     <div>
-                                        <a href="http://localhost/Online-Store/resetPassword.php?code=' . $vcode . '" style="display: inline-block; background-color: blue; color: white; border-radius: 8px; padding: 10px 20px; text-decoration: none;"><span>Reset Password</span></a>
+                                        <a href="http://localhost/Online-Store/pages/user/resetPassword.php?code=' . $vcode . '" style="display: inline-block; background-color: blue; color: white; border-radius: 8px; padding: 10px 20px; text-decoration: none;"><span>Reset Password</span></a>
                                     </div>
                                     <p style="margin-top: 24px;">If you didn\'t request this, please ignore this email.</p>
                                 </td>

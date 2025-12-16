@@ -8,8 +8,8 @@ session_status();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sign In | Online Store</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
 </head>
 
 <body>
@@ -49,7 +49,7 @@ session_status();
                                 </div>
 
                                 <div class="col-6 mb-3 text-end">
-                                    <a href="forgotPassword.php" class="text-decoration-none link-secondary">Forgot Password?</a>
+                                    <a href="pages/user/forgotPassword.php" class="text-decoration-none link-secondary">Forgot Password?</a>
                                 </div>
 
                             </div>
@@ -125,7 +125,7 @@ session_status();
 
     </div>
 
-    <script src="script.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>

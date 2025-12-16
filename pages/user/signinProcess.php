@@ -1,5 +1,5 @@
 <?php
-include "connection.php";
+include "../../config/connection.php";
 
 $email = $_POST['email'];
 $password = $_POST['password'];
@@ -21,7 +21,7 @@ if (empty($email)) {
     $num = $rs->num_rows;
     if ($num == 1) {
         $user = $rs->fetch_assoc();
-        if ($user["status"] == 1) {
+        if ($user["status_id"] == 1) {
 
             session_start();// session start
             $_SESSION["user"] = $user;

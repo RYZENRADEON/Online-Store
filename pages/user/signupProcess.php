@@ -1,5 +1,5 @@
 <?php
-include "connection.php";
+include "../../config/connection.php";
 
 $fname = $_POST['fname'];
 $lname = $_POST['lname'];
