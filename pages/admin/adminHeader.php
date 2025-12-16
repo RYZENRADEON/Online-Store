@@ -19,7 +19,9 @@
           <ul class="dropdown-menu">
             <li><a class="dropdown-item" href="#">Action</a></li>
             <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
             <li><a class="dropdown-item" href="#">Something else here</a></li>
           </ul>
         </li>
@@ -28,9 +30,25 @@
         </li>
       </ul>
       <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
+    </div>
+  </div>
+</nav>
+<!--  -->
+<nav class="nav navbar-extends-lg navbar-dark fixed-top">
+  <div class="container">
+    <a href="/pages/admin/adminDashboard.php" class="navbar-brand h1 mb-0"><img src="/assets/images/logo/logo01.png" alt="" class="me-3" height="50"></a>
+    <button class="navbar-toggler" type="button" data-bs-target="#navbarSupportContent" data-bs-toggle="collapse" aria-controls="navbarSupportContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapsed" id="navbarSupportContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
+        <li class="nav-item me-5">
+          <a href="" class="nav-link active" aria-current="page">User managment</a>
+        </li>
+      </ul>
     </div>
   </div>
 </nav>
