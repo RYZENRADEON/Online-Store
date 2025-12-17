@@ -205,14 +205,14 @@ if (adSigninBtn) {
     adSigninBtn.addEventListener('click', adminSignIn);
 }
 
-const loadUsers = async () => {
-    const direction = '/Online-Store/pages/admin/fetchUsers.php';
+const loadUsers = async (page) => {
+    const direction = `/Online-Store/pages/admin/fetchUsers.php?page=${page}`;
     const method = 'GET';
     const isAsync = true;
 
     try {
         const responseText = await formSubmitHandler(null, direction, method, isAsync);
-        document.getElementById('tableContent').innerHTML = responseText;
+        document.getElementById('content').innerHTML = responseText;
     } catch (error) {
         alert(`Error: ${error}`);
     }
@@ -220,6 +220,31 @@ const loadUsers = async () => {
 
 window.onload = () => {
     if (document.body.id === "adminUserPage") {
-        loadUsers();
+        const page = document.body.dataset.page;
+        loadUsers(page);
     }
 };
+
+const changeUserStatus = async (userId, newStatus, page) => {
+    const form = new FormData();
+
+    form.append('userId', userId);
+    form.append('newStatus', newStatus);
+
+    const direction = '/Online-Store/pages/admin/changeUserStatus.php';
+    const method = 'POST';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() === 'success') {
+            alert('User status updated successfully.');
+            // const currentPage = document.body.dataset.page;
+            loadUsers(page);
+        } else {
+            alert(`Failed to update user status: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
