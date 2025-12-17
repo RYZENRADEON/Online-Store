@@ -1,5 +1,5 @@
 <!-- navbar option1 -->
-<nav class="navbar navbar-expand-lg bg-body-tertiary ">
+<nav class="navbar navbar-expand-lg bg-body-tertiary d-none">
   <div class="container-fluid">
     <a class="navbar-brand" href="/Online-Store/pages/admin/adminDashboard.php">
       <img src="/Online-Store/assets/images/logo/logo01.png" alt="" class="me-3" height="50"/>
@@ -50,7 +50,7 @@
   </div>
 </nav>
 <!-- navbar option2 -->
-<nav class="navbar navbar-expand-lg navbar-dark fixed-top d-none">
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top ">
   <div class="container">
     <a href="/Online-Sttore/pages/admin/adminDashboard.php" class="navbar-brand h1 mb-0">
       <img src="/Online-Store/assets/images/logo/logo01.png" alt="" class="me-3" height="50"/>
@@ -64,7 +64,7 @@
       <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-5">
 
         <li class="nav-item me-5">
-          <a href="" class="nav-link active" aria-current="page">User managment</a>
+          <a href="/Online-Store/pages/admin/adminUser.php" class="nav-link active" aria-current="page">User managment</a>
         </li>
 
         <li class="nav-item me-5">
