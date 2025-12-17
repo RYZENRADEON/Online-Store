@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Sigh In | Online Store</title>
+    <title>Admin Sign In | Online Store</title>
 
     <link rel="icon" href="../../assets/images/logo/logo01.png">
     <link rel="stylesheet" href="../../assets/css/style.css">
@@ -25,12 +25,12 @@
 
                         <div class="col-12 mb-3">
                             <label for="adSiEmail" class="form-label">Email Address</label>
-                            <input type="email" class="form-control" id="adSiEmail">
+                            <input type="email" class="form-control" id="adSiEmail" placeholder="admin@onlinestore.com">
                         </div>
 
                         <div class="col-12 mb-3">
                             <label for="adSiPassword" class="form-label">Password</label>
-                            <input type="password" class="form-control" id="adSiPassword">
+                            <input type="password" class="form-control" id="adSiPassword" placeholder="*********">
                         </div>
 
                         <div class="errorMsgDiv3 d-none">
