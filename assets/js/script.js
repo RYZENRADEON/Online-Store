@@ -4,6 +4,8 @@ const signupBtn = document.getElementById('signupBtn');
 const signinBtn = document.getElementById('signinBtn');
 const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
 const resetPasswordBtn = document.getElementById('resetPasswordBtn');
+const adSigninBtn = document.getElementById('adSigninBtn');
+const adminUserPage = document.getElementById('adminUserPage');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -22,7 +24,7 @@ const formSubmitHandler = (form, direction, method, isAsync) => {
     return new Promise((resolve, reject) => {
         const req = new XMLHttpRequest();
         req.open(method, direction, isAsync);
-        
+
         req.onload = () => {
             if (req.status >= 200 && req.status < 300) {
                 resolve(req.responseText);
@@ -30,7 +32,7 @@ const formSubmitHandler = (form, direction, method, isAsync) => {
                 reject(`HTTP ${req.status}: ${req.statusText}`);
             }
         };
-        
+
         req.onerror = () => reject('Network error');
         req.send(form);
     });
@@ -52,13 +54,14 @@ const signUp = async () => {
     form.append('password', password.value);
 
     const direction = '/Online-Store/pages/user/signupProcess.php';
-    const method = "POST";
+    const method = 'POST';
     const isAsync = true;
 
     try {
         const responseText = await formSubmitHandler(form, direction, method, isAsync);
-        if (responseText.trim() === "success") {
-            alert("Sign Up Successful");
+        if (responseText.trim() === 'success') {
+            alert('Sign Up Successful');
+            window.location.href = '/Online-Store/index.php';
         }
         else {
             const errorMsgDiv2 = document.querySelector('.errorMsgDiv2');
@@ -86,15 +89,15 @@ const signIn = async () => {
     form.append('password', password.value);
     form.append('rememberMe', rememberMe.checked);
 
-    const direction = "/Online-Store/pages/user/signinProcess.php";
-    const method = "POST";
+    const direction = '/Online-Store/pages/user/signinProcess.php';
+    const method = 'POST';
     const isAsync = true;
 
     try {
         const responseText = await formSubmitHandler(form, direction, method, isAsync);
-        if (responseText.trim() === "success") {
-            alert("Sign In Successful");
-            window.location.href = "/Online-Store/pages/user/home.php";
+        if (responseText.trim() === 'success') {
+            alert('Sign In Successful');
+            window.location.href = '/Online-Store/pages/user/home.php';
         }
         else {
             const errorMsgDiv1 = document.querySelector('.errorMsgDiv1');
@@ -121,41 +124,102 @@ const forgotPassword = async () => {
     const method = 'POST';
     const isAsync = true;
 
-    const responseText = await formSubmitHandler(form, direction, method, isAsync);
-    if (responseText.trim() == "sent") {
-        alert('Password reset link sent to your email. Please check your inbox.');
-    } else {
-        alert('Error: ' + responseText);
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() === 'sent') {
+            alert('Password reset link sent to your email. Please check your inbox.');
+        } else {
+            alert(responseText);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
     }
+
 }
 
 if (forgotPasswordBtn) {
     forgotPasswordBtn.addEventListener('click', forgotPassword);
 }
 
-const resetPassword =async () => {
-    const password = document.getElementById("newPassword");
-    const confirmPassword = document.getElementById("confirmPassword");
-    const vcode = document.getElementById("vcode");
+const resetPassword = async () => {
+    const password = document.getElementById('newPassword');
+    const confirmPassword = document.getElementById('confirmPassword');
+    const vcode = document.getElementById('vcode');
     const form = new FormData();
-    
+
     form.append('password', password.value);
     form.append('confirmPassword', confirmPassword.value);
     form.append('vcode', vcode.value);
-    
+
     const direction = '/Online-Store/pages/user/resetPasswordProcess.php';
     const method = 'POST';
     const isAsync = true;
-    
-    const responseText = await formSubmitHandler(form, direction, method, isAsync);
-    if (responseText.trim() == "success") {
-        alert('Password has been reset successfully.');
-        window.location.href = "/Online-Store/index.php";
-    } else {
-        alert('Error: ' + responseText);
+
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() === 'success') {
+            alert('Password has been reset successfully.');
+            window.location.href = '/Online-Store/index.php';
+        } else {
+            alert(responseText);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
     }
 }
 
-if(resetPasswordBtn) {
+if (resetPasswordBtn) {
     resetPasswordBtn.addEventListener('click', resetPassword);
 }
+
+const adminSignIn = async () => {
+    const email = document.getElementById('adSiEmail');
+    const password = document.getElementById('adSiPassword');
+
+    const form = new FormData();
+
+    form.append('email', email.value);
+    form.append('password', password.value);
+
+    const direction = '/Online-Store/pages/admin/adminSignInProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() === 'success') {
+            alert('Admin Sign In Successful');
+            window.location.href = '/Online-Store/pages/admin/adminDashboard.php';
+        } else {
+            const errorMsgDiv = document.querySelector('.errorMsgDiv3');
+            const errorMsg = document.getElementById('errorMsg3');
+            errorMsg.innerText = responseText;
+            errorMsgDiv.classList.remove('d-none');
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+if (adSigninBtn) {
+    adSigninBtn.addEventListener('click', adminSignIn);
+}
+
+const loadUsers = async () => {
+    const direction = '/Online-Store/pages/admin/fetchUsers.php';
+    const method = 'GET';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(null, direction, method, isAsync);
+        document.getElementById('tableContent').innerHTML = responseText;
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+window.onload = () => {
+    if (document.body.id === "adminUserPage") {
+        loadUsers();
+    }
+};
