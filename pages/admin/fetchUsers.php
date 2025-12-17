@@ -14,7 +14,6 @@
     </thead>
 
     <tbody>
-        <!-- fetch user -->
         <?php
 
         include '../../config/connection.php';
@@ -54,7 +53,6 @@
         <?php
         }
         ?>
-        <!-- fetch user -->
     </tbody>
 </table>
 
