@@ -15,7 +15,7 @@ if (isset($_SESSION["admin"])) {
         <link rel="stylesheet" href="../../assets/css/style.css">
     </head>
 
-    <body id="adminUserPage">
+    <body id="adminUserPage" data-page="1">
         <!-- Include the admin header -->
         <?php include 'adminHeader.php'; ?>
         <!-- Include the admin header -->
@@ -24,28 +24,10 @@ if (isset($_SESSION["admin"])) {
             <div class="row d-flex justify-content-center">
                 <div class="col-10 mt-3">
                     <h2 class="text-center">User Managment</h2>
-                    <div class="mt-4 table-responsive">
-                        <table class="table table-striped">
+                    <div class="mt-4 table-responsive" id="content">
+                        <!-- fetch user -->
 
-                            <thead>
-
-                                <tr>
-                                    <th>#</th>
-                                    <th>First Name</th>
-                                    <th>Last Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th class="text-center">Action</th>
-                                </tr>
-
-                            </thead>
-
-                            <tbody id="tableContent">
-                                <!-- fetch user -->
-
-                                <!-- fetch user -->
-                            </tbody>
-                        </table>
+                        <!-- fetch user -->
                     </div>
                 </div>
             </div>
