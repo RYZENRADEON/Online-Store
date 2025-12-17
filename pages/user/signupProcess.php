@@ -48,7 +48,7 @@ if (empty($fname)) {
         echo ("An account with this email already exists");
         exit;
     } else {
-        Database::iud("INSERT INTO `users` (`fname`, `lname`, `mobile`, `email`, `password`, `user_type_id`) VALUES ('$fname','$lname','$mobile','$email','$password', '2')");
+        Database::iud("INSERT INTO `users` (`fname`, `lname`, `mobile`, `email`, `password`, `user_type_id`, `status_id`) VALUES ('$fname','$lname','$mobile','$email','$password', '2', '1')");
         echo ("success");
     }
 }
