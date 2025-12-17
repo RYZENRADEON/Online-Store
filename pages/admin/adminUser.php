@@ -22,7 +22,7 @@ if (isset($_SESSION["admin"])) {
 
         <div class="container admin-body">
             <div class="row d-flex justify-content-center">
-                <div class="col-10">
+                <div class="col-10 mt-3">
                     <h2 class="text-center">User Managment</h2>
                     <div class="mt-4 table-responsive">
                         <table class="table table-striped">
@@ -41,24 +41,9 @@ if (isset($_SESSION["admin"])) {
                             </thead>
 
                             <tbody id="tableContent">
+                                <!-- fetch user -->
 
-                                <!-- <tr>
-                                    <th>00</th>
-                                    <th>fname</th>
-                                    <th>lname</th>
-                                    <th>email@gmail.com</th>
-                                    <th></th>
-                                    <th><button class="btn btn-danger w-100">inactive</button></th>
-                                </tr>
-                                <tr>
-                                    <th>00</th>
-                                    <th>fname</th>
-                                    <th>lname</th>
-                                    <th>email@gmail.com</th>
-                                    <th></th>
-                                    <th><button class="btn btn-primary w-100">active</button></th>
-                                </tr> -->
-
+                                <!-- fetch user -->
                             </tbody>
                         </table>
                     </div>
