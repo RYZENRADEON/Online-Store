@@ -2,7 +2,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary d-none">
   <div class="container-fluid">
     <a class="navbar-brand" href="/Online-Store/pages/admin/adminDashboard.php">
-      <img src="/Online-Store/assets/images/logo/logo01.png" alt="" class="me-3" height="50"/>
+      <img src="/Online-Store/assets/images/logo/logo01.png" alt="" class="me-3" height="50" />
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -53,7 +53,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-secondary fixed-top ">
   <div class="container">
     <a href="/Online-Sttore/pages/admin/adminDashboard.php" class="navbar-brand h1 mb-0">
-      <img src="/Online-Store/assets/images/logo/logo01.png" alt="" class="me-3" height="50"/>
+      <img src="/Online-Store/assets/images/logo/logo01.png" alt="" class="me-3" height="50" />
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportContent" aria-controls="navbarSupportContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +68,7 @@
         </li>
 
         <li class="nav-item me-5">
-          <a href="" class="nav-link active" aria-current="page">Product managment</a>
+          <a href="/Online-Store/pages/admin/adminProduct.php" class="nav-link active" aria-current="page">Product managment</a>
         </li>
 
         <li class="nav-item me-5">
