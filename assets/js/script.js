@@ -9,6 +9,7 @@ const adminUserPage = document.getElementById('adminUserPage');
 const regBrandBtn = document.getElementById('regBrandBtn');
 const regColorBtn = document.getElementById('regColorBtn');
 const regCategoryBtn = document.getElementById('regCategoryBtn');
+const regSizeBtn = document.getElementById('regSizeBtn');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -331,4 +332,31 @@ const registerCategory = async () => {
 
 if(regCategoryBtn) {
     regCategoryBtn.addEventListener('click', registerCategory);
+}
+
+const registerSize = async () => {
+    const sizeName = document.getElementById('regSizeName');
+
+    const form = new FormData();
+    form.append('sizeName', sizeName.value);
+
+    const direction = '/Online-Store/pages/admin/registerSizeProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() == 'success') {
+            alert('Size registered successfully.');
+            window.location.reload();
+        } else {
+            alert(`Failed to register size: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+if(regSizeBtn) {
+    regSizeBtn.addEventListener('click', registerSize);
 }
