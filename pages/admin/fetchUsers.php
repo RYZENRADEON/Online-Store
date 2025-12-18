@@ -56,6 +56,7 @@
     </tbody>
 </table>
 
+<!-- pagination -->
 <nav class="mt-4">
     <ul class="pagination justify-content-end">
 
@@ -95,3 +96,4 @@
 
     </ul>
 </nav>
+<!-- pagination -->
