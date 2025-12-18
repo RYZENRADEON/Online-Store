@@ -6,6 +6,7 @@ const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
 const resetPasswordBtn = document.getElementById('resetPasswordBtn');
 const adSigninBtn = document.getElementById('adSigninBtn');
 const adminUserPage = document.getElementById('adminUserPage');
+const regBrandBtn = document.getElementById('regBrandBtn');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -247,4 +248,31 @@ const changeUserStatus = async (userId, newStatus, page) => {
     } catch (error) {
         alert(`Error: ${error}`);
     }
+}
+
+const registerBrand = async () => {
+    const brandName = document.getElementById('regBrand');
+
+    const form = new FormData();
+    form.append('brandName', brandName.value);
+
+    const direction = '/Online-Store/pages/admin/registerBrandProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+    
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() == 'success') {
+            alert('Brand registered successfully.');
+            window.location.reload();
+        } else {
+            alert(`Failed to register brand: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+if (regBrandBtn) {
+    regBrandBtn.addEventListener('click', registerBrand);
 }
