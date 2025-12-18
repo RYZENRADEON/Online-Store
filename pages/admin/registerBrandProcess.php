@@ -7,13 +7,13 @@ if (empty($brandName)) {
     echo "Brand name cannot be empty";
     exit;
 } else {
-    $rs = Database::search("SELECT * FROM `brand` WHERE `name` = '" . $brandName . "'");
+    $rs = Database::search("SELECT * FROM `brand` WHERE `brand_name` = '" . $brandName . "'");
     $num = $rs->num_rows;
     if ($num > 0) {
         echo "Brand already exists";
         exit;
     } else {
-        Database::iud("INSERT INTO `brand` (`name`) VALUES ('" . $brandName . "')");
+        Database::iud("INSERT INTO `brand` (`brand_name`) VALUES ('" . $brandName . "')");
         echo "success";
     }
 }
