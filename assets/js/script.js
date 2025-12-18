@@ -7,6 +7,7 @@ const resetPasswordBtn = document.getElementById('resetPasswordBtn');
 const adSigninBtn = document.getElementById('adSigninBtn');
 const adminUserPage = document.getElementById('adminUserPage');
 const regBrandBtn = document.getElementById('regBrandBtn');
+const regColorBtn = document.getElementById('regColorBtn');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -251,7 +252,7 @@ const changeUserStatus = async (userId, newStatus, page) => {
 }
 
 const registerBrand = async () => {
-    const brandName = document.getElementById('regBrand');
+    const brandName = document.getElementById('regBrandName');
 
     const form = new FormData();
     form.append('brandName', brandName.value);
@@ -259,7 +260,7 @@ const registerBrand = async () => {
     const direction = '/Online-Store/pages/admin/registerBrandProcess.php';
     const method = 'POST';
     const isAsync = true;
-    
+
     try {
         const responseText = await formSubmitHandler(form, direction, method, isAsync);
         if (responseText.trim() == 'success') {
@@ -275,4 +276,31 @@ const registerBrand = async () => {
 
 if (regBrandBtn) {
     regBrandBtn.addEventListener('click', registerBrand);
+}
+
+const registerColor = async () => {
+    const colorName = document.getElementById('regColorName');
+
+    const form = new FormData();
+    form.append('colorName', colorName.value);
+
+    const direction = '/Online-Store/pages/admin/registerColorProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() == 'success') {
+            alert('Color registered successfully.');
+            window.location.reload();
+        } else {
+            alert(`Failed to register color: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+if(regColorBtn) {
+    regColorBtn.addEventListener('click', registerColor);
 }
