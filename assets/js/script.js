@@ -8,6 +8,7 @@ const adSigninBtn = document.getElementById('adSigninBtn');
 const adminUserPage = document.getElementById('adminUserPage');
 const regBrandBtn = document.getElementById('regBrandBtn');
 const regColorBtn = document.getElementById('regColorBtn');
+const regCategoryBtn = document.getElementById('regCategoryBtn');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -303,4 +304,31 @@ const registerColor = async () => {
 
 if(regColorBtn) {
     regColorBtn.addEventListener('click', registerColor);
+}
+
+const registerCategory = async () => {
+    const categoryName = document.getElementById('regCategoryName');
+
+    const form = new FormData();
+    form.append('categoryName', categoryName.value);
+
+    const direction = '/Online-Store/pages/admin/registerCategoryProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() == 'success') {
+            alert('Category registered successfully.');
+            window.location.reload();
+        } else {
+            alert(`Failed to register category: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+if(regCategoryBtn) {
+    regCategoryBtn.addEventListener('click', registerCategory);
 }
