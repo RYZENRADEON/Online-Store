@@ -25,19 +25,24 @@ if (isset($_SESSION["admin"])) {
                 <div class="col-10 mt-3">
                     <h2 class="text-center">Product Managment</h2>
                     <div class="row">
+
                         <div class="col-12 d-flex justify-content-center mb-2">
-                            <button class="btn btn-primary mb-3">Register Product</button>
+                            <button class="btn btn-sm btn-primary mb-3">Register Product</button>
                         </div>
+
                         <div class="col-6 offset-3 d-flex justify-content-center mb-3">
-                            <button class="btn btn-primary me-2">Add Brand</button>
-                            <button class="btn btn-secondary me-2">Add Category</button>
-                            <button class="btn btn-danger">Add Size</button>
+                            <button class="btn btn-sm btn-primary me-2" data-bs-toggle="modal" data-bs-target="#registerBrandModal">Register New Brand</button>
+                            <button class="btn btn-sm btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#registerColorModal">Register New Color</button>
+                            <button class="btn btn-sm btn-secondary me-2" data-bs-toggle="modal" data-bs-target="#registerCategoryModal">Register New Category</button>
+                            <button class="btn btn-sm btn-danger" data-bs-toggle="modal" data-bs-target="#registerSizeModal">Register New Size</button>
                         </div>
+
                         <div class="mt-4 table-responsive" id="content">
                             <!-- fetch product -->
 
                             <!-- fetch product -->
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -46,25 +51,89 @@ if (isset($_SESSION["admin"])) {
             <?php include 'adminFooter.php'; ?>
             <!-- Include the admin footer -->
 
-            <!-- Button trigger modal -->
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                Launch demo modal
-            </button>
-
-            <!-- Modal -->
-            <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <!-- Register Brand Modal -->
+            <div class="modal fade" id="registerBrandModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">Modal title</h1>
+                            <h1 class="modal-title fs-5">Register Brand</h1>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            ...
+                            <div class="mb-2">
+                                <label for="regBrand" class="form-label">Brand Name</label>
+                                <input type="text" class="form-control" id="regBrandName">
+                            </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="button" class="btn btn-primary">Save changes</button>
+                            <button type="button" class="btn btn-primary" id="regBrandBtn">Add Brand</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Register Color Modal -->
+            <div class="modal fade" id="registerColorModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">Register Color</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-2">
+                                <label for="" class="form-label">Color Name</label>
+                                <input type="text" class="form-control" id="regColorName">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="regColorBtn">Add Color</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Register Category Modal -->
+            <div class="modal fade" id="registerCategoryModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">Register Category</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-2">
+                                <label for="" class="form-label">Category Name</label>
+                                <input type="text" class="form-control" id="regCategoryName">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="regCategoryBtn">Add Category</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Register Size Modal -->
+            <div class="modal fade" id="registerSizeModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">Register Size</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-2">
+                                <label for="" class="form-label">Size Name</label>
+                                <input type="text" class="form-control" id="regSizeName">
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="regSizeBtn">Add Size</button>
                         </div>
                     </div>
                 </div>
