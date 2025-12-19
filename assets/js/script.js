@@ -10,6 +10,7 @@ const regBrandBtn = document.getElementById('regBrandBtn');
 const regColorBtn = document.getElementById('regColorBtn');
 const regCategoryBtn = document.getElementById('regCategoryBtn');
 const regSizeBtn = document.getElementById('regSizeBtn');
+const regProductBtn = document.getElementById('regProductBtn');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -303,7 +304,7 @@ const registerColor = async () => {
     }
 }
 
-if(regColorBtn) {
+if (regColorBtn) {
     regColorBtn.addEventListener('click', registerColor);
 }
 
@@ -330,7 +331,7 @@ const registerCategory = async () => {
     }
 }
 
-if(regCategoryBtn) {
+if (regCategoryBtn) {
     regCategoryBtn.addEventListener('click', registerCategory);
 }
 
@@ -357,6 +358,45 @@ const registerSize = async () => {
     }
 }
 
-if(regSizeBtn) {
+if (regSizeBtn) {
     regSizeBtn.addEventListener('click', registerSize);
+}
+
+const registerProduct = async () => {
+    const regProducteName = document.getElementById('regProducteName');
+    const regProducteDes = document.getElementById('regProducteDes');
+    const regProductCat = document.getElementById('regProductCat');
+    const regProductCol = document.getElementById('regProductCol');
+    const regProductBrand = document.getElementById('regProductBrand');
+    const regProductSize = document.getElementById('regProductSize');
+    const regProductImg = document.getElementById('regProductImg');
+
+    const form = new FormData();
+
+    form.append('regProducteName', regProducteName.value);
+    form.append('regProducteDes', regProducteDes.value);
+    form.append('regProductCat', regProductCat.value);
+    form.append('regProductCol', regProductCol.value);
+    form.append('regProductBrand', regProductBrand.value);
+    form.append('regProductSize', regProductSize.value);
+    form.append('regProductImg', regProductImg.files[0]);
+
+    const direction = '/Online-Store/pages/admin/registerProductProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() == 'success') {
+            alert('Product registered successfully.');
+            window.location.reload();
+        } else {
+            alert(`Failed to register product: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+if(regProductBtn) {
+    regProductBtn.addEventListener('click', registerProduct);
 }
