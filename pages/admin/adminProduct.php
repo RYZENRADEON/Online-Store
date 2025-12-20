@@ -17,7 +17,7 @@ if (isset($_SESSION["admin"])) {
         <link rel="stylesheet" href="../../assets/css/style.css">
     </head>
 
-    <body id="adminUserPage" data-page="1">
+    <body id="adminProductPage" data-page="1">
         <!-- Include the admin header -->
         <?php include 'adminHeader.php'; ?>
         <!-- Include the admin header -->
