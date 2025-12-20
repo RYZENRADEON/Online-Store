@@ -241,6 +241,11 @@ window.onload = () => {
         const page = document.body.dataset.page;
         loadUsers(page);
     }
+
+    if (document.body.id === "adminProductPage") {
+        const page = document.body.dataset.page;
+        loadProdcut(page);
+    }
 };
 
 const changeUserStatus = async (userId, newStatus, page) => {
