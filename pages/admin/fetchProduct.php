@@ -32,11 +32,7 @@
         $noOfPages = ceil($num / $resultsPerPages);
         $pageResults = ($page - 1) * $resultsPerPages;
 
-        $rs2 = Database::search("SELECT * FROM `product` 
-        INNER JOIN `brand` ON `product`.`brand_id` = `brand`.`brand_id`
-        INNER JOIN `color` ON `product`.`color_id` = `color`.`color_id`
-        INNER JOIN `category` ON `product`.`cat_id` = `category`.`cat_id`
-        INNER JOIN `size` ON `product`.`size_id` = `size`.`size_id` LIMIT $resultsPerPages OFFSET $pageResults");
+        $rs2 = Database::search("SELECT * FROM `product_details` LIMIT $resultsPerPages OFFSET $pageResults");
         $num2 = $rs2->num_rows;
 
 
