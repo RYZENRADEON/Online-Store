@@ -272,6 +272,30 @@ const changeUserStatus = async (userId, newStatus, page) => {
     }
 }
 
+const changeProductStatus = async (productId, newStatus, page) => {
+    const form = new FormData();
+
+    form.append('productId', productId);
+    form.append('newStatus', newStatus);
+
+    const direction = '/Online-Store/pages/admin/changeProductStatus.php';
+    const method = 'POST';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() === 'success') {
+            alert('Product status updated successfully.');
+            // const currentPage = document.body.dataset.page;
+            loadProdcut(page);
+        } else {
+            alert(`Failed to update product status: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
 const registerBrand = async () => {
     const brandName = document.getElementById('regBrandName');
 
