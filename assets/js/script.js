@@ -223,6 +223,19 @@ const loadUsers = async (page) => {
     }
 }
 
+const loadProdcut = async (page) => {
+    const direction = `/Online-Store/pages/admin/fetchProduct.php?page=${page}`;
+    const method = 'GET';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(null, direction, method, isAsync);
+        document.getElementById('content').innerHTML = responseText;
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
 window.onload = () => {
     if (document.body.id === "adminUserPage") {
         const page = document.body.dataset.page;
