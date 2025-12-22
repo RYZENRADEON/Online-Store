@@ -53,6 +53,7 @@
                         : '<button class="btn btn-sm btn-danger w-100" onclick="changeProductStatus(' . $row["product_id"] . ', 1, ' . $page . ');">inactive</button>';
                     ?>
                 </th>
+                <th><button class="btn btn-light btn-sm">edit</button></th>
             </tr>
         <?php
         }
