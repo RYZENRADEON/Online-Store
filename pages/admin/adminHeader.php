@@ -72,7 +72,7 @@
         </li>
 
         <li class="nav-item me-5">
-          <a href="" class="nav-link active" aria-current="page">Stock managment</a>
+          <a href="/Online-Store/pages/admin/adminStock.php" class="nav-link active" aria-current="page">Stock managment</a>
         </li>
 
         <li class="nav-item me-5">
