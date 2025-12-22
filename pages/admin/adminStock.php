@@ -75,12 +75,12 @@ if (isset($_SESSION["admin"])) {
 
                             <div class="mb-2">
                                 <label for="regStockPrice" class="form-label">Unit Price</label>
-                                <input type="number" class="form-control" name="" id="regStockPrice">
+                                <input type="number" min="1" step="5.5" class="form-control" name="" id="regStockPrice">
                             </div>
 
                             <div class="mb-2">
                                 <label for="regStockQty">Quantity</label>
-                                <input type="number" class="form-control" name="" id="regStockQty">
+                                <input type="number" min="1" step="1" class="form-control" name="" id="regStockQty">
                             </div>
                         </div>
                         <div class="modal-footer">
