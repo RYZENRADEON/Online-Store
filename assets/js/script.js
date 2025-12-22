@@ -11,6 +11,7 @@ const regColorBtn = document.getElementById('regColorBtn');
 const regCategoryBtn = document.getElementById('regCategoryBtn');
 const regSizeBtn = document.getElementById('regSizeBtn');
 const regProductBtn = document.getElementById('regProductBtn');
+const regStockBtn = document.getElementById('regStockBtn');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -439,6 +440,37 @@ const registerProduct = async () => {
     }
 }
 
-if(regProductBtn) {
+if (regProductBtn) {
     regProductBtn.addEventListener('click', registerProduct);
+}
+
+const registerStock = async () => {
+    const regStockPro = document.getElementById('regStockPro');
+    const regStockPrice = document.getElementById('regStockPrice');
+    const regStockQty = document.getElementById('regStockQty');
+
+    const form = new FormData();
+
+    form.append('regStockPro', regStockPro.value);
+    form.append('regStockPrice', regStockPrice.value);
+    form.append('regStockQty', regStockQty.value);
+
+    const direction = '/Online-Store/pages/admin/registerStockProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() == 'success') {
+            alert('Stock registered successfully.');
+            window.location.reload();
+        } else {
+            alert(`Failed to register stock: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+if(regStockBtn) {
+    regStockBtn.addEventListener('click', registerStock);
 }
