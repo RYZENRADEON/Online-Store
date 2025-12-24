@@ -479,7 +479,7 @@ const registerStock = async () => {
     try {
         const responseText = await formSubmitHandler(form, direction, method, isAsync);
         if (responseText.trim() == 'success') {
-            alert('Stock registered successfully.');
+            sweetAlerts(true, "Stock registerBrand", responseText, 'success');
             window.location.reload();
         } else {
             alert(`Failed to register stock: ${responseText}`);
@@ -489,6 +489,36 @@ const registerStock = async () => {
     }
 }
 
-if(regStockBtn) {
+if (regStockBtn) {
     regStockBtn.addEventListener('click', registerStock);
+}
+
+// sweet alaert and toast 
+const sweetAlerts = (type, title, text, icon) => {
+    type == true ? Toast.fire({
+        icon: icon,
+        title: title,
+        text: text
+    }) : Swal.fire({
+        title: title,
+        text: text,
+        icon: icon,
+        confirmButtonText: 'Close'
+    });
+
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "bottom-end",
+        showConfirmButton: false,
+        timer: 3000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+        }
+    });
+}
+
+if (regStockBtn) {
+    regStockBtn.addEventListener('click', sweetAlerts);
 }
