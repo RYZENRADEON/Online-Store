@@ -33,9 +33,9 @@ if (isset($_SESSION["admin"])) {
                         </div>
 
                         <div class="mt-4 table-responsive" id="content">
-                            <!-- fetch product -->
+                            <!-- fetch stock -->
 
-                            <!-- fetch product -->
+                            <!-- fetch stock -->
                         </div>
 
                     </div>
@@ -92,6 +92,7 @@ if (isset($_SESSION["admin"])) {
             </div>
             <!-- Register Stock Modal -->
 
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
             <script src="../../assets/js/script.js"></script>
             <script src="../../assets/js/bootstrap.js"></script>
     </body>
