@@ -519,6 +519,19 @@ const sweetAlerts = (type, title, text, icon) => {
     });
 }
 
-if (regStockBtn) {
-    regStockBtn.addEventListener('click', sweetAlerts);
+const loadProductUpdateModal = async (prodId) => {
+    const form = null;
+    const direction = '/Online-Store/pages/admin/fetchProductDetails.php?id=' + prodId;
+    const method = 'GET';
+    const isAsync = true;
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText) {
+            const data = JSON.parse(responseText);
+        } else {
+            alert(`Failed to load product update modal: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
 }
