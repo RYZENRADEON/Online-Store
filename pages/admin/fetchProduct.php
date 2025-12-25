@@ -39,21 +39,21 @@
         while ($row = $rs2->fetch_assoc()) {
         ?>
             <tr>
-                <th><?php echo $row["product_id"]; ?></th>
-                <th><?php echo $row["product_name"]; ?></th>
-                <th><?php echo $row["img"]; ?></th>
-                <th><?php echo $row["color_name"]; ?></th>
-                <th><?php echo $row["cat_name"]; ?></th>
-                <th><?php echo $row["size_name"]; ?></th>
-                <th><?php echo $row["brand_name"]; ?></th>
-                <th>
+                <td><?php echo $row["product_id"]; ?></td>
+                <td><?php echo $row["product_name"]; ?></td>
+                <td><?php echo $row["img"]; ?></td>
+                <td><?php echo $row["color_name"]; ?></td>
+                <td><?php echo $row["cat_name"]; ?></td>
+                <td><?php echo $row["size_name"]; ?></td>
+                <td><?php echo $row["brand_name"]; ?></td>
+                <td>
                     <?php
                     echo ($row["status_id"] == 1)
                         ? '<button class="btn btn-sm btn-primary w-100" onclick="changeProductStatus(' . $row["product_id"] . ', 2,' . $page . ');">active</button>'
                         : '<button class="btn btn-sm btn-danger w-100" onclick="changeProductStatus(' . $row["product_id"] . ', 1, ' . $page . ');">inactive</button>';
                     ?>
-                </th>
-                <th><button class="btn btn-light btn-sm">edit</button></th>
+                </td>
+                <td><button class="btn btn-light btn-sm" id="prodEditModelBtn" data-proId="<?php echo($row["product_id"]); ?>" >edit</button></td>
             </tr>
         <?php
         }
