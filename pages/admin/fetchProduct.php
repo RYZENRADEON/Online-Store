@@ -53,7 +53,7 @@
                         : '<button class="btn btn-sm btn-danger w-100" onclick="changeProductStatus(' . $row["product_id"] . ', 1, ' . $page . ');">inactive</button>';
                     ?>
                 </td>
-                <td><button class="btn btn-light btn-sm" id="prodEditModelBtn" data-proId="<?php echo($row["product_id"]); ?>" >edit</button></td>
+                <td><button class="btn btn-light btn-sm edit-product-btn" data-id="<?php echo($row['product_id']); ?>">edit</button></td>
             </tr>
         <?php
         }
