@@ -37,18 +37,18 @@
         while ($row = $rs2->fetch_assoc()) {
         ?>
             <tr>
-                <th><?php echo $row["id"]; ?></th>
-                <th><?php echo $row["fname"]; ?></th>
-                <th><?php echo $row["lname"]; ?></th>
-                <th><?php echo $row["email"]; ?></th>
-                <th><?php echo $row["mobile"]; ?></th>
-                <th>
+                <td><?php echo $row["id"]; ?></td>
+                <td><?php echo $row["fname"]; ?></td>
+                <td><?php echo $row["lname"]; ?></td>
+                <td><?php echo $row["email"]; ?></td>
+                <td><?php echo $row["mobile"]; ?></td>
+                <td>
                     <?php
                     echo ($row["status_id"] == 1)
                         ? '<button class="btn btn-sm btn-primary w-100" onclick="changeUserStatus(' . $row["id"] . ', 2,' . $page . ');">active</button>'
                         : '<button class="btn btn-sm btn-danger w-100" onclick="changeUserStatus(' . $row["id"] . ', 1, ' . $page . ');">inactive</button>';
                     ?>
-                </th>
+                </td>
             </tr>
         <?php
         }
