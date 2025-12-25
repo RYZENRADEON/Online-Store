@@ -544,14 +544,29 @@ const updateProductUpdateModal = (prodData) => {
     document.getElementById('editProductCol').value = prodData.color_id;
     document.getElementById('editProductBrand').value = prodData.brand_id;
     document.getElementById('editProductSize').value = prodData.size_id;
+    document.getElementById('productPreview').src = prodData.img;
 
     new bootstrap.Modal('#editProductModal').show();
 }
 
 document.addEventListener('click', (e) => {
     const btn = e.target.closest('.edit-product-btn');
-    if(!btn) return;
+    if (!btn) return;
 
     const prodId = btn.dataset.id;
     loadProductUpdateModal(prodId);
+});
+
+const img = document.getElementById('editProductImg');
+const preview = document.getElementById('productPreview');
+
+img.addEventListener('change', () => {
+    const file = img.files[0];
+    if (file) {
+        const reder = new FileReader();
+        reder.onload = (e) => {
+            preview.src = e.target.result;
+        };
+        reder.readAsDataURL(file);
+    }
 });
