@@ -547,3 +547,11 @@ const updateProductUpdateModal = (prodData) => {
 
     new bootstrap.Modal('#editProductModal').show();
 }
+
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.edit-product-btn');
+    if(!btn) return;
+
+    const prodId = btn.dataset.id;
+    loadProductUpdateModal(prodId);
+});
