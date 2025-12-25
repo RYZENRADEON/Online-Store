@@ -528,10 +528,22 @@ const loadProductUpdateModal = async (prodId) => {
         const responseText = await formSubmitHandler(form, direction, method, isAsync);
         if (responseText) {
             const data = JSON.parse(responseText);
+            updateProductUpdateModal(data);
         } else {
             alert(`Failed to load product update modal: ${responseText}`);
         }
     } catch (error) {
         alert(`Error: ${error}`);
     }
+}
+
+const updateProductUpdateModal = (prodData) => {
+    document.getElementById('editProducteName').value = prodData.product_name;
+    document.getElementById('editProducteDes').value = prodData.description;
+    document.getElementById('editProductCat').value = prodData.cat_id;
+    document.getElementById('editProductCol').value = prodData.color_id;
+    document.getElementById('editProductBrand').value = prodData.brand_id;
+    document.getElementById('editProductSize').value = prodData.size_id;
+
+    new bootstrap.Modal('#editProductModal').show();
 }
