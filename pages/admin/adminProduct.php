@@ -252,6 +252,113 @@ if (isset($_SESSION["admin"])) {
             </div>
             <!-- Register Product Modal -->
 
+            <!-- Edit Product Modal -->
+            <div class="modal fade" id="editProductModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5">Edit Product</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+
+                            <div class="mb-2">
+                                <label for="editProducteName" class="form-label" >Product Name</label>
+                                <input type="text" class="form-control" id="editProducteName">
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="editProducteDes" class="form-label">Product Description</label>
+                                <textarea type="text" class="form-control" id="editProducteDes" rows="5"></textarea>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="editProductCat" class="form-label">Category</label>
+                                <select id="editProductCat" class="form-select">
+                                    <option value="0">Select Category</option>
+                                    <?php
+                                    $rs = Database::search("SELECT * FROM `category`");
+                                    $num = $rs->num_rows;
+
+                                    for ($x = 0; $x < $num; $x++) {
+                                        $row = $rs->fetch_assoc();
+                                    ?>
+                                        <option value="<?php echo ($row["cat_id"]) ?>"><?php echo ($row["cat_name"]) ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="editProductCol" class="form-label">Color</label>
+                                <select id="editProductCol" class="form-select">
+                                    <option value="0">Select Color</option>
+                                    <?php
+                                    $rs = Database::search("SELECT * FROM `color`");
+                                    $num = $rs->num_rows;
+
+                                    for ($x = 0; $x < $num; $x++) {
+                                        $row = $rs->fetch_assoc();
+                                    ?>
+                                        <option value="<?php echo ($row["color_id"]) ?>"><?php echo ($row["color_name"]) ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="editProductBrand" class="form-label">Brand</label>
+                                <select id="editProductBrand" class="form-select">
+                                    <option value="0">Select Brand</option>
+                                    <?php
+                                    $rs = Database::search("SELECT * FROM `brand`");
+                                    $num = $rs->num_rows;
+
+                                    for ($x = 0; $x < $num; $x++) {
+                                        $row = $rs->fetch_assoc();
+                                    ?>
+                                        <option value="<?php echo ($row["brand_id"]) ?>"><?php echo ($row["brand_name"]) ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="editProductSize" class="form-label">Size</label>
+                                <select id="editProductSize" class="form-select">
+                                    <option value="0">Select Size</option>
+                                    <?php
+                                    $rs = Database::search("SELECT * FROM `size`");
+                                    $num = $rs->num_rows;
+
+                                    for ($x = 0; $x < $num; $x++) {
+                                        $row = $rs->fetch_assoc();
+                                    ?>
+                                        <option value="<?php echo ($row["size_id"]) ?>"><?php echo ($row["size_name"]) ?></option>
+                                    <?php
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="editProductImg" class="form-label">Product Image</label>
+                                <input type="file" id="editProductImg" class="form-control">
+                            </div>
+
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary" id="editProductBtn">Edit Product</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Edit Product Modal -->
+
             <script src="../../assets/js/script.js"></script>
             <script src="../../assets/js/bootstrap.js"></script>
     </body>
