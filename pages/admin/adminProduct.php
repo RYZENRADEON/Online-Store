@@ -263,7 +263,11 @@ if (isset($_SESSION["admin"])) {
                         <div class="modal-body">
 
                             <div class="mb-2">
-                                <label for="editProducteName" class="form-label" >Product Name</label>
+                                <input type="text" class="form-control" id="editProducteId" disabled>
+                            </div>
+
+                            <div class="mb-2">
+                                <label for="editProducteName" class="form-label">Product Name</label>
                                 <input type="text" class="form-control" id="editProducteName">
                             </div>
 
@@ -346,6 +350,7 @@ if (isset($_SESSION["admin"])) {
 
                             <div class="mb-2">
                                 <label for="editProductImg" class="form-label">Product Image</label>
+                                <img id="productPreview" src="" alt="product image" height="300" class="col-12 img-fluid mb-2">
                                 <input type="file" id="editProductImg" class="form-control">
                             </div>
 
