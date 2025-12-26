@@ -12,6 +12,7 @@ const regCategoryBtn = document.getElementById('regCategoryBtn');
 const regSizeBtn = document.getElementById('regSizeBtn');
 const regProductBtn = document.getElementById('regProductBtn');
 const regStockBtn = document.getElementById('regStockBtn');
+const editProductBtn = document.getElementById('editProductBtn');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -538,13 +539,14 @@ const loadProductUpdateModal = async (prodId) => {
 }
 
 const updateProductUpdateModal = (prodData) => {
+    document.getElementById('editProducteId').value = prodData.product_id;
     document.getElementById('editProducteName').value = prodData.product_name;
     document.getElementById('editProducteDes').value = prodData.description;
     document.getElementById('editProductCat').value = prodData.cat_id;
     document.getElementById('editProductCol').value = prodData.color_id;
     document.getElementById('editProductBrand').value = prodData.brand_id;
     document.getElementById('editProductSize').value = prodData.size_id;
-    document.getElementById('productPreview').src = prodData.img;
+    document.getElementById('productPreview').src = prodData.img;//same
 
     new bootstrap.Modal('#editProductModal').show();
 }
@@ -558,7 +560,7 @@ document.addEventListener('click', (e) => {
 });
 
 const img = document.getElementById('editProductImg');
-const preview = document.getElementById('productPreview');
+const preview = document.getElementById('productPreview');//same
 
 img.addEventListener('change', () => {
     const file = img.files[0];
@@ -570,3 +572,44 @@ img.addEventListener('change', () => {
         reder.readAsDataURL(file);
     }
 });
+
+const updateProduct = async () => {
+    const editProducteId = document.getElementById('editProducteId');
+    const editProducteName =  document.getElementById('editProducteName');
+    const editProducteDes = document.getElementById('editProducteDes');
+    const editProductCat = document.getElementById('editProductCat');
+    const editProductCol = document.getElementById('editProductCol');
+    const editProductBrand = document.getElementById('editProductBrand');
+    const editProductSize =  document.getElementById('editProductSize');
+    const editProductImg = document.getElementById('editProductImg');
+
+    const form = new FormData();
+
+    form.append('editProducteId', editProducteId.value);
+    form.append('editProducteName', editProducteName.value);
+    form.append('editProducteDes', editProducteDes.value);
+    form.append('editProductCat', editProductCat.value);
+    form.append('editProductCol', editProductCol.value);
+    form.append('editProductBrand', editProductBrand.value);
+    form.append('editProductSize', editProductSize.value);
+    form.append('editProductImg', editProductImg.files[0]);
+
+    const direction = '/Online-Store/pages/admin/updateProductProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() == 'success') {
+            alert('Product updated successfully.');
+            window.location.reload();
+        } else {
+            alert(`Failed to upload product: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+if(editProductBtn) {
+    editProductBtn.addEventListener('click', updateProduct);
+}
