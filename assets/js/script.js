@@ -316,6 +316,30 @@ const changeProductStatus = async (productId, newStatus, page) => {
     }
 }
 
+const changeStockStatus = async (stockId, newStatus, page) => {
+    const form = new FormData();
+
+    form.append('stockId', stockId);
+    form.append('newStatus', newStatus);
+
+    const direction = '/Online-Store/pages/admin/changeStockStatus.php';
+    const method = 'POST';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() === 'success') {
+            alert('Stock status updated successfully.');
+            // const currentPage = document.body.dataset.page;
+            loadStock(page);
+        } else {
+            alert(`Failed to update stock status: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
 const registerBrand = async () => {
     const brandName = document.getElementById('regBrandName');
 
