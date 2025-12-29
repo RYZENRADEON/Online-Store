@@ -15,6 +15,7 @@ const regStockBtn = document.getElementById('regStockBtn');
 const editProductBtn = document.getElementById('editProductBtn');
 const img = document.getElementById('editProductImg');
 const preview = document.getElementById('productPreview');//same
+const printBtn = document.getElementById('printBtn');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -637,4 +638,17 @@ const updateProduct = async () => {
 
 if (editProductBtn) {
     editProductBtn.addEventListener('click', updateProduct);
+}
+
+const printReport = () => {
+    const original = document.body.innerHTML;
+    const printArea = document.getElementById('printArea');
+    document.body.innerHTML = printArea.innerHTML;
+    window.print();
+
+    document.body.innerHTML = original;
+}
+
+if (printBtn) {
+    printBtn.addEventListener('click', printReport);
 }
