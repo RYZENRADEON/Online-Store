@@ -13,6 +13,8 @@ const regSizeBtn = document.getElementById('regSizeBtn');
 const regProductBtn = document.getElementById('regProductBtn');
 const regStockBtn = document.getElementById('regStockBtn');
 const editProductBtn = document.getElementById('editProductBtn');
+const img = document.getElementById('editProductImg');
+const preview = document.getElementById('productPreview');//same
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -583,28 +585,27 @@ document.addEventListener('click', (e) => {
     loadProductUpdateModal(prodId);
 });
 
-const img = document.getElementById('editProductImg');
-const preview = document.getElementById('productPreview');//same
-
-img.addEventListener('change', () => {
-    const file = img.files[0];
-    if (file) {
-        const reder = new FileReader();
-        reder.onload = (e) => {
-            preview.src = e.target.result;
-        };
-        reder.readAsDataURL(file);
-    }
-});
+if (img && preview) {
+    img.addEventListener('change', () => {
+        const file = img.files[0];
+        if (file) {
+            const reder = new FileReader();
+            reder.onload = (e) => {
+                preview.src = e.target.result;
+            };
+            reder.readAsDataURL(file);
+        }
+    });
+}
 
 const updateProduct = async () => {
     const editProducteId = document.getElementById('editProducteId');
-    const editProducteName =  document.getElementById('editProducteName');
+    const editProducteName = document.getElementById('editProducteName');
     const editProducteDes = document.getElementById('editProducteDes');
     const editProductCat = document.getElementById('editProductCat');
     const editProductCol = document.getElementById('editProductCol');
     const editProductBrand = document.getElementById('editProductBrand');
-    const editProductSize =  document.getElementById('editProductSize');
+    const editProductSize = document.getElementById('editProductSize');
     const editProductImg = document.getElementById('editProductImg');
 
     const form = new FormData();
@@ -634,6 +635,6 @@ const updateProduct = async () => {
     }
 }
 
-if(editProductBtn) {
+if (editProductBtn) {
     editProductBtn.addEventListener('click', updateProduct);
 }
