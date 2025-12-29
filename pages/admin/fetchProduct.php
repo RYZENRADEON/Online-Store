@@ -32,7 +32,7 @@
         $noOfPages = ceil($num / $resultsPerPages);
         $pageResults = ($page - 1) * $resultsPerPages;
 
-        $rs2 = Database::search("SELECT * FROM `product_details` LIMIT $resultsPerPages OFFSET $pageResults");
+        $rs2 = Database::search("SELECT * FROM `product_details` ORDER BY `product_id` ASC LIMIT $resultsPerPages OFFSET $pageResults");
         $num2 = $rs2->num_rows;
 
 
