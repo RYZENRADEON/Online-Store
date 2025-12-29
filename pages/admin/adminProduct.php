@@ -24,7 +24,7 @@ if (isset($_SESSION["admin"])) {
 
         <div class="container admin-body">
             <div class="row d-flex justify-content-center">
-                <div class="col-10 mt-3">
+                <div class="col-12 mt-3">
                     <h2 class="text-center">Product Managment</h2>
                     <div class="row">
 
