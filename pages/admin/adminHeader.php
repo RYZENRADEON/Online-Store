@@ -76,7 +76,7 @@
         </li>
 
         <li class="nav-item me-5">
-          <a href="" class="nav-link active" aria-current="page">Reports</a>
+          <a href="/Online-Store/pages/admin/adminReport.php" class="nav-link active" aria-current="page">Reports</a>
         </li>
 
       </ul>
