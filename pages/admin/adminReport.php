@@ -30,7 +30,7 @@ if (isset($_SESSION["admin"])) {
                         <a class="btn btn-outline-warning fw-bold w-100" href="productReport.php">Product Report</a>
                     </div>
                     <div class="col-4">
-                        <a class="btn btn-outline-warning fw-bold w-100" href="#">Stock Report</a>
+                        <a class="btn btn-outline-warning fw-bold w-100" href="stockReport.php">Stock Report</a>
                     </div>
                 </div>
             </div>
