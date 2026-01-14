@@ -66,7 +66,7 @@ if (isset($_SESSION["admin"])) {
                                     for ($x = 0; $x < $num; $x++) {
                                         $row = $rs->fetch_assoc();
                                     ?>
-                                        <option value="<?php echo ($row["product_id"]) ?>"><?php echo ($row["product_name"] . ' ' . $row["color_name"] . ' ' . $row["cat_name"] . ' ' . $row["size_name"] . ' ' . $row["brand_name"]); ?></option>
+                                        <option value="<?php echo ($row["product_id"]) ?>"><?php echo ("#" . $row["product_id"] . ' ' . $row["product_name"] . ' ' . $row["color_name"] . ' ' . $row["cat_name"] . ' ' . $row["size_name"] . ' ' . $row["brand_name"]); ?></option>
                                     <?php
                                     }
                                     ?>
