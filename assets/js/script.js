@@ -507,7 +507,7 @@ const registerStock = async () => {
     try {
         const responseText = await formSubmitHandler(form, direction, method, isAsync);
         if (responseText.trim() == 'success') {
-            sweetAlerts(true, "Stock registerBrand", responseText, 'success');
+            // sweetAlerts(true, "Stock registerBrand", responseText, 'success');
             window.location.reload();
         } else {
             alert(`Failed to register stock: ${responseText}`);
