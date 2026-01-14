@@ -1,5 +1,6 @@
 <?php
 session_start();
+include '../../config/connection.php';
 if (isset($_SESSION["user"])) {
 ?>
     <!DOCTYPE html>
@@ -44,92 +45,41 @@ if (isset($_SESSION["user"])) {
                 <div class="col-8 offset-2">
                     <div class="row">
 
-                        <div class="col-12 col-md-4 col-lg-3 my-3 mt-3">
-                            <div class="card rounded-3">
-                                <a href="" class="link-light text-decoration-none"><img src="../../assets/images/product/694dd21015b4eimages.jpg" class="card-img-top rounded-top-3" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title fs-4">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <p class="card-text fs-3 fw-bold text-secondary-emphasis text-end"> LKR 2500.00</p>
-                                    </div>
-                                </a>
+                        <?php
+                        $rs = Database::search("SELECT * FROM `stock_details` WHERE `stock_status` = 'active' AND `status` = 'active' LIMIT 8");
+
+                        while ($row = $rs->fetch_assoc()) {
+                        ?>
+                            <div class="col-12 col-md-4 col-lg-3 my-3 mt-3">
+                                <div class="card rounded-3">
+                                    <a href="" class="link-light text-decoration-none">
+                                        <img src="<?php echo ($row["img"]); ?>" class="card-img-top rounded-top-3" alt="..." height="215px">
+                                        <div class="card-body">
+                                            <h5 class="card-title fs-4"><?php echo ($row["product_name"]); ?></h5>
+                                            <p class="card-text"><?php echo ($row["description"]); ?></p>
+                                            <p class="card-text fs-3 fw-bold text-secondary-emphasis text-end"> LKR <?php echo ($row["price"]); ?></p>
+                                        </div>
+                                    </a>
+                                </div>
                             </div>
-                        </div>
-                        <div class="col-12 col-md-4 col-lg-3 my-3 mt-3">
-                            <div class="card rounded-3">
-                                <a href="" class="link-light text-decoration-none"><img src="../../assets/images/product/694dd21015b4eimages.jpg" class="card-img-top rounded-top-3" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title fs-4">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <p class="card-text fs-3 fw-bold text-secondary-emphasis text-end"> LKR 2500.00</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4 col-lg-3 my-3 mt-3">
-                            <div class="card rounded-3">
-                                <a href="" class="link-light text-decoration-none"><img src="../../assets/images/product/694dd21015b4eimages.jpg" class="card-img-top rounded-top-3" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title fs-4">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <p class="card-text fs-3 fw-bold text-secondary-emphasis text-end"> LKR 2500.00</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4 col-lg-3 my-3 mt-3">
-                            <div class="card rounded-3">
-                                <a href="" class="link-light text-decoration-none"><img src="../../assets/images/product/694dd21015b4eimages.jpg" class="card-img-top rounded-top-3" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title fs-4">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <p class="card-text fs-3 fw-bold text-secondary-emphasis text-end"> LKR 2500.00</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4 col-lg-3 my-3 mt-3">
-                            <div class="card rounded-3">
-                                <a href="" class="link-light text-decoration-none"><img src="../../assets/images/product/694dd21015b4eimages.jpg" class="card-img-top rounded-top-3" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title fs-4">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <p class="card-text fs-3 fw-bold text-secondary-emphasis text-end"> LKR 2500.00</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4 col-lg-3 my-3 mt-3">
-                            <div class="card rounded-3">
-                                <a href="" class="link-light text-decoration-none"><img src="../../assets/images/product/694dd21015b4eimages.jpg" class="card-img-top rounded-top-3" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title fs-4">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <p class="card-text fs-3 fw-bold text-secondary-emphasis text-end"> LKR 2500.00</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                        <div class="col-12 col-md-4 col-lg-3 my-3 mt-3">
-                            <div class="card rounded-3">
-                                <a href="" class="link-light text-decoration-none"><img src="../../assets/images/product/694dd21015b4eimages.jpg" class="card-img-top rounded-top-3" alt="...">
-                                    <div class="card-body">
-                                        <h5 class="card-title fs-4">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card’s content.</p>
-                                        <p class="card-text fs-3 fw-bold text-secondary-emphasis text-end"> LKR 2500.00</p>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        <?php
+                        }
+                        ?>
 
                     </div>
+                </div>
+            </div> 
+
+            <div class="row mb-4">
+                <div class="col-12 mt-5 mx-0 overflow-hidden">
+                    <img src="../../assets/images/banners/23761001_6811885.jpg" alt="" width="100%" height="325px" style="position: relative; transform: scale(1.1); object-fit: cover; transition: transform 0.5s ease;">
                 </div>
             </div>
         </div>
 
 
         <!-- Include the user footer -->
-        <?php include '../admin/adminFooter.php'; ?>
+        <?php include 'userFooter.php'; ?>
         <!-- Include the user footer -->
 
         <script src="../../assets/js/script.js"></script>
