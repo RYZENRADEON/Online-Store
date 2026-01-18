@@ -255,10 +255,10 @@ const loadStock = async (page) => {
     }
 }
 
-const search = async () => {
+const search = async (page) => {
     const text = document.getElementById('search').value;
     
-    const direction = `/Online-Store/pages/user/searchProductProcess.php?search=${text}`;
+    const direction = `/Online-Store/pages/user/searchProductProcess.php?search=${text}&page=${page}`;
     const method = 'GET';
     const isAsync = true;
 
@@ -287,7 +287,8 @@ window.onload = () => {
     }
 
     if(document.body.id === 'adSearch'){
-        search();
+        const page = document.body.dataset.page;
+        search(page);
     }
 };
 
