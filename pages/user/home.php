@@ -22,18 +22,18 @@ if (isset($_SESSION["user"])) {
         <!-- Include the user header -->
 
         <div class="container-fluid mb-5">
-            <div class="row">
+            <form class="row" action="shop.php" method="GET">
                 <div class="col-5 offset-3 mt-3">
                     <div class="form-floating">
-                        <input type="text" class="form-control" id="search" placeholder="Search...">
+                        <input type="text" class="form-control" name="search" id="search" placeholder="Search...">
                         <label for="search">search</label>
                     </div>
                 </div>
 
                 <div class="col-1 mt-4 d-grid">
-                    <button class="btn btn-sm btn-secondary">search</button>
+                    <button class="btn btn-sm btn-secondary" id="searchBtn">search</button>
                 </div>
-            </div>
+            </form>
 
             <div class="row">
                 <div class="col-12 mt-5 mx-0 overflow-hidden">
@@ -68,7 +68,7 @@ if (isset($_SESSION["user"])) {
 
                     </div>
                 </div>
-            </div> 
+            </div>
 
             <div class="row mb-4">
                 <div class="col-12 mt-5 mx-0 overflow-hidden">
