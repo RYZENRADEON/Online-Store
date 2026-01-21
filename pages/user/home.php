@@ -52,7 +52,7 @@ if (isset($_SESSION["user"])) {
                         ?>
                             <div class="col-12 col-md-4 col-lg-3 my-3 mt-3">
                                 <div class="card rounded-3">
-                                    <a href="" class="link-light text-decoration-none">
+                                    <a href="singleProductView.php?productId=<?php echo($row['stock_id']); ?>" class="link-light text-decoration-none">
                                         <img src="<?php echo ($row["img"]); ?>" class="card-img-top rounded-top-3" alt="..." height="215px">
                                         <div class="card-body">
                                             <h5 class="card-title fs-4"><?php echo ($row["product_name"]); ?></h5>
