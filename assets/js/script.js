@@ -216,6 +216,7 @@ if (adSigninBtn) {
     adSigninBtn.addEventListener('click', adminSignIn);
 }
 
+// --PAGE_LOAD--
 const loadUsers = async (page) => {
     const direction = `/Online-Store/pages/admin/fetchUsers.php?page=${page}`;
     const method = 'GET';
@@ -257,7 +258,7 @@ const loadStock = async (page) => {
 
 const search = async (page) => {
     const text = document.getElementById('search').value;
-    
+
     const direction = `/Online-Store/pages/user/searchProductProcess.php?search=${text}&page=${page}`;
     const method = 'GET';
     const isAsync = true;
@@ -270,6 +271,7 @@ const search = async (page) => {
     }
 }
 
+// --ONLOAD--
 window.onload = () => {
     if (document.body.id === "adminUserPage") {
         const page = document.body.dataset.page;
@@ -286,7 +288,7 @@ window.onload = () => {
         loadStock(page);
     }
 
-    if(document.body.id === 'adSearch'){
+    if (document.body.id === 'adSearch') {
         const page = document.body.dataset.page;
         search(page);
     }
@@ -672,4 +674,35 @@ const printReport = () => {
 
 if (printBtn) {
     printBtn.addEventListener('click', printReport);
+}
+
+const filter = async (page) => {
+    const search = document.getElementById('search');
+    const category = document.getElementById('category');
+    const brand = document.getElementById('brand');
+    const color = document.getElementById('color');
+    const size = document.getElementById('size');
+    const from = document.getElementById('priceFrom');
+    const to = document.getElementById('priceTo');
+
+    const form = new FormData();
+
+    form.append('search', search.value);
+    form.append('category', category.value);
+    form.append('brand', brand.value);
+    form.append('color', color.value);
+    form.append('size', size.value);
+    form.append('from', from.value);
+    form.append('to', to.value);
+    form.append('page', page.value);
+
+    const direction = '/Online-Store/pages/user/filterProductProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+    try {
+        const respostext = await formSubmitHandler(form, direction, method, isAsync);
+        document.getElementById('content').innerHTML = respostext;
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
 }
