@@ -706,3 +706,31 @@ const filter = async (page) => {
         alert(`Error: ${error}`);
     }
 }
+
+const profPicUploadBtn = document.getElementById('profPicUploadBtn');
+
+const profileImageUpload = async () => {
+    const profileImg = document.getElementById('profileImg');
+
+    const form = new FormData();
+    form.append('profileImg', profileImg.file);
+
+    const direction = '/Online-Store/pages/user/updateProfileImgProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() == 'success') {
+            alert('Profile image uploaded successfully.');
+            window.location.reload();
+        } else {
+            alert(`Failed to upload product: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+if (profPicUploadBtn) {
+    profPicUploadBtn.addEventListener('click', profileImageUpload);
+}
