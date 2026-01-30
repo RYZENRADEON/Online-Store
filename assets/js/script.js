@@ -713,7 +713,7 @@ const profileImageUpload = async () => {
     const profileImg = document.getElementById('profileImg');
 
     const form = new FormData();
-    form.append('profileImg', profileImg.file);
+    form.append('profileImg', profileImg.files[0]);
 
     const direction = '/Online-Store/pages/user/updateProfileImgProcess.php';
     const method = 'POST';
@@ -724,7 +724,7 @@ const profileImageUpload = async () => {
             alert('Profile image uploaded successfully.');
             window.location.reload();
         } else {
-            alert(`Failed to upload product: ${responseText}`);
+            alert(`Failed to upload profile image: ${responseText}`);
         }
     } catch (error) {
         alert(`Error: ${error}`);
