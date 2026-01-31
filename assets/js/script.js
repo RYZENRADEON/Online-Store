@@ -708,6 +708,7 @@ const filter = async (page) => {
 }
 
 const profPicUploadBtn = document.getElementById('profPicUploadBtn');
+const updateProfileBtn = document.getElementById('updateProfileBtn');
 
 const profileImageUpload = async () => {
     const profileImg = document.getElementById('profileImg');
@@ -733,4 +734,47 @@ const profileImageUpload = async () => {
 
 if (profPicUploadBtn) {
     profPicUploadBtn.addEventListener('click', profileImageUpload);
+}
+
+const updateProfileDetails = async () => {
+    const fname = document.getElementById('fname');
+    const lname = document.getElementById('lname');
+    const mobile = document.getElementById('mobile');
+
+    const addNo = document.getElementById('addNo');
+    const addLine1 = document.getElementById('addLine1');
+    const addLine2 = document.getElementById('addLine2');
+    const addCity = document.getElementById('addCity');
+    const addPCode = document.getElementById('addPCode');
+
+    const form = new FormData();
+
+    form.append('fname', fname.value);
+    form.append('lname', lname.value);
+    form.append('mobile', mobile.value);
+    form.append('addNo', addNo.value);
+    form.append('addLine1', addLine1.value);
+    form.append('addLine2', addLine2.value);
+    form.append('addCity', addCity.value);
+    form.append('addPCode', addPCode.value);
+
+    const direction = '/Online-Store/pages/user/updateProfileDetailsProcess.php';
+    const method = 'POST';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        if (responseText.trim() === 'success') {
+            alert('Profile Details Updated successfully.');
+            window.location.reload();
+        } else {
+            alert(`Failed to update profile details: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+if (updateProfileBtn) {
+    updateProfileBtn.addEventListener('click', updateProfileDetails);
 }
