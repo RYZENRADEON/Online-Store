@@ -17,6 +17,8 @@ const img = document.getElementById('editProductImg');
 const preview = document.getElementById('productPreview');//same
 const printBtn = document.getElementById('printBtn');
 // const searchBtn = document.getElementById('searchBtn');
+const profPicUploadBtn = document.getElementById('profPicUploadBtn');
+const updateProfileBtn = document.getElementById('updateProfileBtn');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -572,7 +574,7 @@ const sweetAlerts = (type, title, text, icon) => {
 
 const loadProductUpdateModal = async (prodId) => {
     const form = null;
-    const direction = '/Online-Store/pages/admin/fetchProductDetails.php?id=' + prodId;
+    const direction = `/Online-Store/pages/admin/fetchProductDetails.php?id=${prodId}`;
     const method = 'GET';
     const isAsync = true;
     try {
@@ -707,9 +709,6 @@ const filter = async (page) => {
     }
 }
 
-const profPicUploadBtn = document.getElementById('profPicUploadBtn');
-const updateProfileBtn = document.getElementById('updateProfileBtn');
-
 const profileImageUpload = async () => {
     const profileImg = document.getElementById('profileImg');
 
@@ -773,8 +772,4 @@ const updateProfileDetails = async () => {
     } catch (error) {
         alert(`Error: ${error}`);
     }
-}
-
-if (updateProfileBtn) {
-    updateProfileBtn.addEventListener('click', updateProfileDetails);
 }
