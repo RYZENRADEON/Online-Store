@@ -19,6 +19,7 @@ const printBtn = document.getElementById('printBtn');
 // const searchBtn = document.getElementById('searchBtn');
 const profPicUploadBtn = document.getElementById('profPicUploadBtn');
 const updateProfileBtn = document.getElementById('updateProfileBtn');
+const addToCatrBtn = document.getElementById('addToCatrBtn');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -772,4 +773,29 @@ const updateProfileDetails = async () => {
     } catch (error) {
         alert(`Error: ${error}`);
     }
+}
+
+const addToCart = async (stockId) => {
+    const cartQty = document.getElementById('cartQty').value;
+    
+    const direction = `/Online-Store/pages/user/addToCartProcess.php?stock=${stockId}&qty=${cartQty}`;
+    const method = 'GET';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(null, direction, method, isAsync);
+        if (responseText.trim() === 'success') {
+            alert('Product added into cart successfully.');
+            window.location.reload();
+        } else {
+            alert(`Failed to add product into cart: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+if (addToCatrBtn) {
+    const stockId = document.body.dataset.stockId;
+    addToCatrBtn.addEventListener('click', () => addToCart(stockId));
 }
