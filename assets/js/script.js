@@ -274,6 +274,19 @@ const search = async (page) => {
     }
 }
 
+const loadCart = async () => {
+    const direction = `/Online-Store/pages/user/loadCartProcess.php`;
+    const method = 'GET';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(null, direction, method, isAsync);
+        document.getElementById('content').innerHTML = responseText;
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
 // --ONLOAD--
 window.onload = () => {
     if (document.body.id === "adminUserPage") {
@@ -294,6 +307,10 @@ window.onload = () => {
     if (document.body.id === 'adSearch') {
         const page = document.body.dataset.page;
         search(page);
+    }
+
+    if(document.body.id === 'cart'){
+        loadCart();
     }
 };
 
