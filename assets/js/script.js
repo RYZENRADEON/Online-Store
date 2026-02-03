@@ -20,6 +20,7 @@ const printBtn = document.getElementById('printBtn');
 const profPicUploadBtn = document.getElementById('profPicUploadBtn');
 const updateProfileBtn = document.getElementById('updateProfileBtn');
 const addToCatrBtn = document.getElementById('addToCatrBtn');
+// const delCartBtn = document.getElementById('delCartBtn');//same
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -309,7 +310,7 @@ window.onload = () => {
         search(page);
     }
 
-    if(document.body.id === 'cart'){
+    if (document.body.id === 'cart') {
         loadCart();
     }
 };
@@ -794,7 +795,7 @@ const updateProfileDetails = async () => {
 
 const addToCart = async (stockId) => {
     const cartQty = document.getElementById('cartQty').value;
-    
+
     const direction = `/Online-Store/pages/user/addToCartProcess.php?stock=${stockId}&qty=${cartQty}`;
     const method = 'GET';
     const isAsync = true;
@@ -815,4 +816,23 @@ const addToCart = async (stockId) => {
 if (addToCatrBtn) {
     const stockId = document.body.dataset.stockId;
     addToCatrBtn.addEventListener('click', () => addToCart(stockId));
+}
+
+const removeFromCart = async (cartId) => {
+
+    const direction = `/Online-Store/pages/user/deleteCartItemProcess.php?cartId=${cartId}`;
+    const method = 'GET';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(null, direction, method, isAsync);
+        if (responseText.trim() === 'success') {
+            alert('Cart item deleted successfully.');
+            loadCart();
+        } else {
+            alert(`Failed to delete cart item: ${responseText}`);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
 }
