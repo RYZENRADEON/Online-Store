@@ -15,16 +15,26 @@ if (isset($_SESSION["admin"])) {
         <link rel="stylesheet" href="../../assets/css/bootstrap.css">
     </head>
 
-    <body>
+    <body id="adminDashboard">
         <!-- Include the admin header -->
         <?php include 'adminHeader.php'; ?>
         <!-- Include the admin header -->
 
+        <div class="container admin-body">
+            <div class="row">
+
+                <div style="width: 100%; height: 500px;" class="card">
+                    <canvas id="chart1"></canvas>
+                </div>
+
+            </div>
+        </div>
 
         <!-- Include the admin footer -->
         <?php include 'adminFooter.php'; ?>
         <!-- Include the admin footer -->
 
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
         <script src="../../assets/js/script.js"></script>
         <script src="../../assets/js/bootstrap.js"></script>
     </body>
