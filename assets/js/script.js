@@ -836,3 +836,25 @@ const removeFromCart = async (cartId) => {
         alert(`Error: ${error}`);
     }
 }
+
+const cartQtyChange = async (cartId, status) => {
+    const direction = `/Online-Store/pages/user/updateCartQtyProcess.php?cartId=${cartId}&status=${status}`;
+    const method = 'GET';
+    const isAsync = true;
+
+    try {
+        const responseText = await formSubmitHandler(null, direction, method, isAsync);
+        if (responseText.trim() === 'success') {
+            loadCart();
+        } else {
+            alert(responseText);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+    if (status) {
+        console.log(status);
+    } else {
+        console.log(status);
+    }
+}
