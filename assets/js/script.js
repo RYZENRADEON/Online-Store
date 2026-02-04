@@ -299,8 +299,6 @@ const loadChart = async () => {
         const responseText = await formSubmitHandler(null, direction, method, isAsync);
         const json = JSON.parse(responseText);
 
-        
-
         new Chart(ctx, {
             type: 'line',
             data: {
@@ -319,8 +317,6 @@ const loadChart = async () => {
                 }
             }
         });
-        // document.getElementById('content').innerHTML = responseText;
-        console.log(responseText);
     } catch (error) {
         alert(`Error: ${error}`);
     }
