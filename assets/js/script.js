@@ -897,3 +897,50 @@ const cartQtyChange = async (cartId, status) => {
         console.log(status);
     }
 }
+
+const checkout = async () => {
+    const direction = `/Online-Store/pages/user/paymentProcess1.php?cart=true`;
+    const method = 'GET';
+    const isAsync = true;
+
+    try {
+        const jsonResponseText = await formSubmitHandler(null, direction, method, isAsync);
+        const responseText = JSON.parse(jsonResponseText);
+
+        if (responseText.status === 'success') {
+            doCheckout(responseText.payment, "");
+        } else {
+            alert(responseText.error);
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+document.addEventListener('click', (e) => {
+    if (e.target && e.target.id === 'checkoutBtn') {
+        checkout();
+    }
+});
+
+const doCheckout = async (payment, url) => {
+    // Payment completed. It can be a successful failure.
+    payhere.onCompleted = function onCompleted(orderId) {
+        alert("Payment completed. OrderID:" + orderId);
+        // Note: validate the payment and show success or failure page to the customer
+    };
+
+    // Payment window closed
+    payhere.onDismissed = function onDismissed() {
+        // Note: Prompt user to pay again or show an error page
+        alert("Payment dismissed");
+    };
+
+    // Error occurred
+    payhere.onError = function onError(error) {
+        // Note: show an error page
+        alert("Error:" + error);
+    };
+
+    payhere.startPayment(payment);
+}
