@@ -38,6 +38,7 @@ if (!isset($_SESSION["user"])) {
     <?php include 'userFooter.php'; ?>
     <!-- Include the user footer -->
 
+    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
     <script src="../../assets/js/bootstrap.js"></script>
     <script src="../../assets/js/script.js"></script>
 </body>
