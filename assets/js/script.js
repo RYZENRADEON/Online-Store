@@ -891,15 +891,10 @@ const cartQtyChange = async (cartId, status) => {
     } catch (error) {
         alert(`Error: ${error}`);
     }
-    if (status) {
-        console.log(status);
-    } else {
-        console.log(status);
-    }
 }
 
 const checkout = async () => {
-    const direction = `/Online-Store/pages/user/paymentProcess1.php?cart=true`;
+    const direction = `/Online-Store/pages/user/paymentProcess.php?cart=true`;
     const method = 'GET';
     const isAsync = true;
 
@@ -908,7 +903,7 @@ const checkout = async () => {
         const responseText = JSON.parse(jsonResponseText);
 
         if (responseText.status === 'success') {
-            doCheckout(responseText.payment, "");
+            doCheckout(responseText.payment, "checkoutProcess.php");
         } else {
             alert(responseText.error);
         }
@@ -923,11 +918,32 @@ document.addEventListener('click', (e) => {
     }
 });
 
-const doCheckout = async (payment, url) => {
+const doCheckout = (payment, url) => {
     // Payment completed. It can be a successful failure.
-    payhere.onCompleted = function onCompleted(orderId) {
+    payhere.onCompleted = async function onCompleted(orderId) {
         alert("Payment completed. OrderID:" + orderId);
         // Note: validate the payment and show success or failure page to the customer
+
+        const form = new FormData();
+        form.append('payment', JSON.stringify(payment));
+
+        const direction = url;
+        const method = 'POST';
+        const isAsync = true;
+
+        try {
+            const jsonResponseText = await formSubmitHandler(form, direction, method, isAsync);
+            const responseText = JSON.parse(jsonResponseText);
+            if (responseText.status === 'success') {
+                console.log(responseText);
+                window.location.reload();
+            } else {
+                console.log(`Failed to checkout products: ${responseText.error}`);
+            }
+        } catch (error) {
+            alert(`Error: ${error}`);
+        }
+
     };
 
     // Payment window closed
