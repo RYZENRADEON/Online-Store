@@ -79,6 +79,14 @@ $totalAmount = 0;
                 </div>
 
             <?php
+            } else {
+                ?>
+                <div class="col-8 offset-2 text-center vh-75">
+                    <img src="../../assets/images/default/empty_cart.png" class="img-fluid" alt="">
+                    <h2 class="text-success-emphasis">no products</h2>
+                    <span class="text-muted">let's do shopping and pick your choice</span>
+                </div>
+                <?PHP
             }
             ?>
         </div>
