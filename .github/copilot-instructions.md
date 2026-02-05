@@ -1,4 +1,4 @@
-# Copilot instructions for Online-Store (PHP)
+# Instructions for Online-Store (PHP)
 
 ## Quick snapshot
 - Monolithic PHP app served under XAMPP (document root: `htdocs/Online-Store`).
