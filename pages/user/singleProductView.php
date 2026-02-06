@@ -83,7 +83,7 @@ $row = $rs->fetch_assoc();
                                 <button class="btn btn-primary" id="addToCatrBtn">Add to Cart</button>
                             </div>
                             <div class="col-6 d-grid">
-                                <button class="btn btn-secondary">Buy Now</button>
+                                <button class="btn btn-secondary" id="buyNowBtn">Buy Now</button>
                             </div>
                         </div>
                     </div>
@@ -96,6 +96,7 @@ $row = $rs->fetch_assoc();
     <?php include 'userFooter.php'; ?>
     <!-- Include the user footer -->
 
+    <script type="text/javascript" src="https://www.payhere.lk/lib/payhere.js"></script>
     <script src="../../assets/js/bootstrap.js"></script>
     <script src="../../assets/js/script.js"></script>
 </body>
