@@ -7,7 +7,7 @@ if (!isset($_SESSION["user"])) {
     exit;
 }
 
-$user = $_SESSION["user"];
+$user       = $_SESSION["user"];
 $users_id   = $user["id"];
 $userFName  = $user['fname'];
 $userLName  = $user['lname'];
@@ -19,12 +19,15 @@ $error = '';
 $stockList = [];
 $qtyList   = [];
 
-if (isset($_GET['cart']) && $_GET['cart'] == 'true') {
+if (isset($_POST['cart']) && $_POST['cart'] == 'true') {
     $rs = Database::search("SELECT * FROM `cart` WHERE `users_id` = '$users_id'");
     while ($row = $rs->fetch_assoc()) {
-        $stockList[] = $row['stock_id'];
-        $qtyList[]   = $row['qty'];
+        $stockList[]    = $row['stock_id'];
+        $qtyList[]      = $row['qty'];
     }
+} else {
+    $stockList[]    = $_POST['stockId'];
+    $qtyList[]      = $_POST['cartQty'];
 }
 
 $merchantId     = 1233906;
