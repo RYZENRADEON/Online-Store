@@ -21,11 +21,7 @@ REPLACE INTO `brand` (`brand_id`, `brand_name`) VALUES
 	(3, 'Adidas'),
 	(4, 'CP');
 
--- Dumping data for table online_store.cart: ~2 rows (approximately)
-REPLACE INTO `cart` (`cart_id`, `users_id`, `stock_id`, `qty`) VALUES
-	(7, 1, 5, 1),
-	(11, 1, 10, 1),
-	(12, 1, 8, 1);
+-- Dumping data for table online_store.cart: ~1 rows (approximately)
 
 -- Dumping data for table online_store.category: ~5 rows (approximately)
 REPLACE INTO `category` (`cat_id`, `cat_name`) VALUES
@@ -43,7 +39,32 @@ REPLACE INTO `color` (`color_id`, `color_name`) VALUES
 	(4, 'Red'),
 	(5, 'Pink');
 
--- Dumping data for table online_store.order_history: ~0 rows (approximately)
+-- Dumping data for table online_store.order_history: ~8 rows (approximately)
+REPLACE INTO `order_history` (`orderHistory_id`, `order_id`, `order_date`, `amount`, `users_id`) VALUES
+	(1, '6984af63a2ec8', '2026-02-05 20:26:12', 2766, 1),
+	(2, '6984dadd85c15', '2026-02-05 23:31:34', 4060, 1),
+	(3, '6984dbe18ff7b', '2026-02-05 23:35:52', 4060, 1),
+	(4, '69859b975bcfa', '2026-02-06 13:13:57', 1390, 1),
+	(5, '69859d14b06dc', '2026-02-06 13:20:32', 1390, 1),
+	(6, '69859db466de5', '2026-02-06 13:23:22', 1390, 1),
+	(7, '6985a063b0af0', '2026-02-06 13:34:11', 1390, 1),
+	(8, '698647fe49523', '2026-02-07 01:29:42', 17448, 1);
+
+-- Dumping data for table online_store.order_items: ~13 rows (approximately)
+REPLACE INTO `order_items` (`orderItems_id`, `qty`, `price`, `orderHistory_id`, `stock_id`) VALUES
+	(1, 1, 890, 1, 5),
+	(2, 1, 587.69, 1, 10),
+	(3, 1, 789.35, 1, 8),
+	(4, 4, 890, 2, 5),
+	(5, 4, 890, 3, 5),
+	(6, 1, 890, 5, 5),
+	(7, 1, 890, 6, 5),
+	(8, 1, 890, 7, 5),
+	(9, 2, 890, 8, 5),
+	(10, 6, 741.65, 8, 11),
+	(11, 11, 587.69, 8, 10),
+	(12, 5, 256, 8, 3),
+	(13, 5, 597.57, 8, 7);
 
 -- Dumping data for table online_store.product: ~10 rows (approximately)
 REPLACE INTO `product` (`product_id`, `product_name`, `description`, `img`, `color_id`, `cat_id`, `size_id`, `brand_id`, `status_id`) VALUES
@@ -77,24 +98,24 @@ REPLACE INTO `status` (`id`, `status`) VALUES
 REPLACE INTO `stock` (`stock_id`, `price`, `qty`, `status_id`, `product_id`) VALUES
 	(1, 250.5, 150, 2, 7),
 	(2, 275.25, 152, 2, 1),
-	(3, 256, 30, 1, 10),
+	(3, 256, 25, 1, 10),
 	(4, 500, 0, 1, 9),
-	(5, 890, 700, 1, 8),
+	(5, 890, 687, 1, 8),
 	(6, 587.25, 852, 1, 8),
-	(7, 597.57, 650, 1, 9),
-	(8, 789.35, 870, 1, 8),
+	(7, 597.57, 645, 1, 9),
+	(8, 789.35, 869, 1, 8),
 	(9, 650.36, 555, 1, 9),
-	(10, 587.69, 587, 1, 10),
-	(11, 741.65, 665, 1, 8);
+	(10, 587.69, 575, 1, 10),
+	(11, 741.65, 659, 1, 8);
 
 -- Dumping data for table online_store.useraddress: ~1 rows (approximately)
 REPLACE INTO `useraddress` (`userAddress_id`, `users_id`, `no`, `line_1`, `line_2`, `city`, `postal_code`) VALUES
-	(2, 1, '221B', ' Baker Street', '', ' zip code', 'NW16XE');
+	(2, 1, '221B', ' Baker Street', '', 'new York', 'NW16XE');
 
 -- Dumping data for table online_store.users: ~13 rows (approximately)
 REPLACE INTO `users` (`id`, `fname`, `lname`, `mobile`, `email`, `password`, `profile`, `user_type_id`, `v_code`, `status_id`) VALUES
 	(1, 'fname', 'lname', '0777777771', 'email@gmail.com', '00001', '../../assets/images/profile/697cb1ceda3484K-Blue-Nebula-Wallpaper-48980.jpg', 2, NULL, 1),
-	(2, 'fname0', 'lname0', '0777777777', 'r5rx5600ma@gmail.com', '00003', NULL, 1, NULL, 1),
+	(2, 'fname0', 'lname0', '0777777777', 'r5rx5600ma@gmail.com', '00003', NULL, 1, '698642a4a5940', 1),
 	(3, 'fname1', 'lname1', '0781234567', 'email1@gmail.com', '00001', NULL, 2, NULL, 1),
 	(4, 'fname2', 'lname2', '0781111111', 'email2@gmail.com', '00003', NULL, 2, NULL, 1),
 	(5, 'fname3', 'lname3', '0780000000', 'email3@gmail.com', '00004', NULL, 2, NULL, 1),
