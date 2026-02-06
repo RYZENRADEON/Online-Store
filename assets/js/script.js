@@ -16,11 +16,12 @@ const editProductBtn = document.getElementById('editProductBtn');
 const img = document.getElementById('editProductImg');
 const preview = document.getElementById('productPreview');//same
 const printBtn = document.getElementById('printBtn');
-// const searchBtn = document.getElementById('searchBtn');
+// const searchBtn         = document.getElementById('searchBtn');
 const profPicUploadBtn = document.getElementById('profPicUploadBtn');
 const updateProfileBtn = document.getElementById('updateProfileBtn');
 const addToCatrBtn = document.getElementById('addToCatrBtn');
-// const delCartBtn = document.getElementById('delCartBtn');//same
+// const delCartBtn        = document.getElementById('delCartBtn');//same
+const buyNowBtn = document.getElementById('buyNowBtn');
 
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
@@ -131,7 +132,7 @@ if (signinBtn) {
 
 const forgotPassword = async () => {
     const email = document.getElementById("fpEmail");
-
+    
     const form = new FormData();
     form.append('email', email.value);
 
@@ -149,7 +150,7 @@ const forgotPassword = async () => {
     } catch (error) {
         alert(`Error: ${error}`);
     }
-
+    
 }
 
 if (forgotPasswordBtn) {
@@ -894,12 +895,15 @@ const cartQtyChange = async (cartId, status) => {
 }
 
 const checkout = async () => {
-    const direction = `/Online-Store/pages/user/paymentProcess.php?cart=true`;
-    const method = 'GET';
+    const form = new FormData();
+    form.append('cart', true);
+
+    const direction = `/Online-Store/pages/user/paymentProcess.php`;
+    const method = 'POST';
     const isAsync = true;
 
     try {
-        const jsonResponseText = await formSubmitHandler(null, direction, method, isAsync);
+        const jsonResponseText = await formSubmitHandler(form, direction, method, isAsync);
         const responseText = JSON.parse(jsonResponseText);
 
         if (responseText.status === 'success') {
@@ -959,4 +963,45 @@ const doCheckout = (payment, url) => {
     };
 
     payhere.startPayment(payment);
+}
+
+const buyNow = async (stockId) => {
+    const cartQty = document.getElementById('cartQty').value;
+    if (cartQty > 0) {
+        const form = new FormData();
+
+        form.append('cart', false);
+        form.append('cartQty', cartQty);
+        form.append('stockId', stockId);
+
+        const direction = 'paymentProcess.php';
+        const method = 'POST';
+        const isAsync = true;
+
+        try {
+            const jsonResponseText = await formSubmitHandler(form, direction, method, isAsync);
+            const responseText = JSON.parse(jsonResponseText);
+
+            if (responseText.status === 'success') {
+
+                responseText.payment.stock_id = stockId;
+                responseText.payment.qty = cartQty;
+
+                doCheckout(responseText.payment, "buyNowProcess.php");
+            } else {
+                alert(responseText.error);
+            }
+        } catch (error) {
+            console.log(`Error: ${error}`);
+        }
+
+    } else {
+        alert('Quentity cannot be less that 1');
+    }
+    console.log(stockId + " | " + cartQty.value);
+}
+
+if (buyNowBtn) {
+    const stockId = document.body.dataset.stockId;
+    buyNowBtn.addEventListener('click', () => buyNow(stockId));
 }
