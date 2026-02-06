@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
     <div class="container-fluid">
         <!-- Logo -->
-        <a class="navbar-brand" href="/Online-Store/pages/admin/adminDashboard.php">
+        <a class="navbar-brand" href="/Online-Store/pages/user/home.php">
             <img src="/Online-Store/assets/images/logo/logo01.png" alt="Logo" class="me-2" height="50" />
         </a>
 
@@ -17,16 +17,16 @@
             <!-- Left Nav Links -->
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="home.php">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Cart</a>
+                    <a class="nav-link" href="cart.php">Cart</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Users</a>
+                    <a class="nav-link" href="/Online-Store/pages/user/userProfile.php">Users</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Order History</a>
+                    <a class="nav-link" href="/Online-Store/pages/user/orderHistory.php">Order History</a>
                 </li>
 
                 <!-- Dropdown -->
