@@ -948,7 +948,7 @@ const doCheckout = (payment, url) => {
             const responseText = JSON.parse(jsonResponseText);
             if (responseText.status === 'success') {
                 console.log(responseText);
-                window.location.reload();
+                window.location.href = `invoice.php?orderHistoryId=${responseText.orderHistoryId}`;
             } else {
                 console.log(`Failed to checkout products: ${responseText.error}`);
             }
