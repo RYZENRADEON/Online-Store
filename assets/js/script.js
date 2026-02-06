@@ -125,21 +125,27 @@ const signIn = async () => {
         alert(`Error: ${error}`);
     }
 }
+
 if (signinBtn) {
     signinBtn.addEventListener('click', signIn);
 }
 
-
 const forgotPassword = async () => {
+    const loader = document.getElementById('loader');
+    const text = document.getElementById('forgotPasswordBtnText');
+
+    loader.classList.remove('d-none');//loading animation test
+    text.classList.add('d-none');
+    
     const email = document.getElementById("fpEmail");
     
     const form = new FormData();
     form.append('email', email.value);
-
+    
     const direction = '/Online-Store/pages/user/forgotPasswordProcess.php';
     const method = 'POST';
     const isAsync = true;
-
+    
     try {
         const responseText = await formSubmitHandler(form, direction, method, isAsync);
         if (responseText.trim() === 'sent') {
@@ -150,7 +156,9 @@ const forgotPassword = async () => {
     } catch (error) {
         alert(`Error: ${error}`);
     }
-    
+
+    loader.classList.add('d-none');
+    text.classList.remove('d-none');
 }
 
 if (forgotPasswordBtn) {
