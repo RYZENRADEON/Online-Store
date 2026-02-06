@@ -29,7 +29,12 @@
                         </div>
 
                         <div class="d-grid mb-3">
-                            <button class="btn btn-secondary" id="forgotPasswordBtn">Reset Password</button>
+                            <button class="btn btn-secondary" id="forgotPasswordBtn">
+                                <span id="forgotPasswordBtnText">Reset Password</span>
+                                <div class="spinner-border d-none" role="status" id="loader">
+                                    <span class="visually-hidden">Loading...</span>
+                                </div>
+                            </button>
                         </div>
 
                     </div>
