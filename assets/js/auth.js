@@ -5,18 +5,19 @@ const signupBtn = document.getElementById('signupBtn');
 const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
 const resetPasswordBtn = document.getElementById('resetPasswordBtn');
 
-async function signIn() {
+async function logIn() {
     const email = document.getElementById('siEmail');
     const password = document.getElementById('siPassword');
     const rememberMe = document.getElementById('rememberMe');
 
     const form = new FormData();
 
+    form.append('action', 'logIn');
     form.append('email', email.value);
     form.append('password', password.value);
     form.append('rememberMe', rememberMe.checked);
 
-    const direction = '/Online-Store/pages/user/signinProcess.php';
+    const direction = '/Online-Store/controllers/user_controller.php';
     const method = 'POST';
     const isAsync = true;
 
@@ -46,13 +47,14 @@ async function signUp() {
 
     const form = new FormData();
 
+    form.append('action', 'register');
     form.append('fname', fName.value);
     form.append('lname', lName.value);
     form.append('mobile', mobile.value);
     form.append('email', email.value);
     form.append('password', password.value);
 
-    const direction = '/Online-Store/pages/user/signupProcess.php';
+    const direction = '/Online-Store/controllers/user_controller.php';
     const method = 'POST';
     const isAsync = true;
 
@@ -132,7 +134,7 @@ const resetPassword = async () => {
 }
 
 if (signinBtn) {
-    signinBtn.addEventListener('click', signIn)
+    signinBtn.addEventListener('click', logIn)
 }
 if (signupBtn) {
     signupBtn.addEventListener('click', signUp);
