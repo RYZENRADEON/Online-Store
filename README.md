@@ -53,5 +53,3 @@
 - Security or API-contract changes (switch to JSON responses, add prepared statements, change response strings): open a design PR, document the migration steps (update front-end, add tests where possible), and add run instructions.
 
 ---
-
-If anything here is unclear or you'd like stronger rules (e.g., prefer Composer for PHPMailer, migrate all SQL to prepared statements), tell me which policy to apply and I will update this file accordingly.
