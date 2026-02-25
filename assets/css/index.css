@@ -8,7 +8,6 @@ body {
     padding: 1.5rem;
 }
 
-
 .form-floating:focus-within {
     position: relative;
     z-index: 2;
