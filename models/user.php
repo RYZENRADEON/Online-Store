@@ -1,5 +1,5 @@
 <?php
-include '../config/connection.php';
+// require '../config/connection.php';
 class User
 {
     public static function register($fname, $lname, $mobile, $email, $password)
@@ -54,16 +54,16 @@ class User
     public static function logIn($email, $password)
     {
         if (empty($email)) {
-            echo ("Please enter your email address");
+            return ("Please enter your email address");
             exit;
         } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo ("Invalid email format");
+            return ("Invalid email format");
             exit;
         } elseif (empty($password)) {
-            echo ("Please enter your password");
+            return ("Please enter your password");
             exit;
         } elseif (strlen($password) < 3 || strlen($password) > 20) {
-            echo ("Password should be between 3 and 20 characters long");
+            return ("Password should be between 3 and 20 characters long");
             exit;
         } else {
             $rs = Database::search("SELECT * FROM `users` WHERE `email` = '$email' AND `password` = '$password'");
@@ -82,13 +82,13 @@ class User
                         setcookie("email", "", time() - 3600, "/");
                         setcookie("password", "", time() - 3600, "/");
                     }
-                    echo ("success");
+                    return ("success");
                 } else {
-                    echo ("Your account has been disabled. Please contact support.");
+                    return ("Your account has been disabled. Please contact support.");
                     exit;
                 }
             } else {
-                echo ("Incorrect email or password");
+                return ("Incorrect email or password");
                 exit;
             }
         }
