@@ -1,5 +1,7 @@
 <?php
+include_once '../config/connection.php';
 require_once '../models/user.php';
+require_once '../models/admin.php';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
@@ -25,7 +27,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $result = User::logIn($email, $password);
             echo $result;
             break;
-        
+
+        case 'admin':
+
+            $email = $_POST['email'];
+            $password = $_POST['password'];
+
+            $result = Admin::logIn($email, $password);
+            echo $result;
+            break;
+
         default:
             # code...
             break;
