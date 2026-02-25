@@ -4,6 +4,7 @@ const signinBtn = document.getElementById('signinBtn');
 const signupBtn = document.getElementById('signupBtn');
 const forgotPasswordBtn = document.getElementById('forgotPasswordBtn');
 const resetPasswordBtn = document.getElementById('resetPasswordBtn');
+const adSigninBtn = document.getElementById('adSigninBtn');
 
 async function logIn() {
     const email = document.getElementById('siEmail');
@@ -92,7 +93,7 @@ const forgotPassword = async () => {
     const isAsync = true;
 
     try {
-        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        const responseText = await httpRequest(form, direction, method, isAsync);
         if (responseText.trim() === 'sent') {
             alert('Password reset link sent to your email. Please check your inbox.');
         } else {
@@ -121,7 +122,7 @@ const resetPassword = async () => {
     const isAsync = true;
 
     try {
-        const responseText = await formSubmitHandler(form, direction, method, isAsync);
+        const responseText = await httpRequest(form, direction, method, isAsync);
         if (responseText.trim() === 'success') {
             alert('Password has been reset successfully.');
             window.location.href = '/Online-Store/index.php';
@@ -131,6 +132,40 @@ const resetPassword = async () => {
     } catch (error) {
         alert(`Error: ${error}`);
     }
+}
+
+const adminSignIn = async () => {
+    const email = document.getElementById('adSiEmail');
+    const password = document.getElementById('adSiPassword');
+
+    const form = new FormData();
+    
+    form.append('action', 'admin');
+    form.append('email', email.value);
+    form.append('password', password.value);
+
+    const direction = '/Online-Store/controllers/user_controller.php';
+    const method = 'POST';
+    const isAsync = true;
+
+    try {
+        const responseText = await httpRequest(form, direction, method, isAsync);
+        if (responseText.trim() === 'success') {
+            alert('Admin Sign In Successful');
+            window.location.href = '/Online-Store/pages/admin/adminDashboard.php';
+        } else {
+            const errorMsgDiv = document.querySelector('.errorMsgDiv3');
+            const errorMsg = document.getElementById('errorMsg3');
+            errorMsg.innerText = responseText;
+            errorMsgDiv.classList.remove('d-none');
+        }
+    } catch (error) {
+        alert(`Error: ${error}`);
+    }
+}
+
+if (adSigninBtn) {
+    adSigninBtn.addEventListener('click', adminSignIn);
 }
 
 if (signinBtn) {
