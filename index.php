@@ -32,6 +32,7 @@ session_status();
 </head>
 
 <body class="d-flex align-items-center py-4 bg-body-tertiary">
+
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
             <path
@@ -55,6 +56,7 @@ session_status();
             </path>
         </symbol>
     </svg>
+    
     <div class="dropdown position-fixed top-0 end-0 mt-3 me-3 bd-mode-toggle">
         <button class="btn btn-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
             aria-expanded="false" data-bs-toggle="dropdown" aria-label="Toggle theme (auto)">
@@ -128,13 +130,23 @@ session_status();
             </div>
 
             <div class="form-check text-start my-3">
-                <input class="form-check-input" type="checkbox" value="remember-me" id="rememberMe" />
-                <label class="form-check-label" for="rememberMe">
-                    Remember me
-                </label>
+
+                <div class="row">
+                    <div class="col-6 mb-3">
+                        <input class="form-check-input" type="checkbox" value="remember-me" id="rememberMe" />
+                        <label class="form-check-label" for="rememberMe">
+                            Remember me
+                        </label>
+                    </div>
+
+                    <div class="col-6 mb-3 text-end">
+                        <a href="pages/user/forgotPassword.php" class="text-decoration-none link-secondary">Forgot Password?</a>
+                    </div>
+                </div>
+
             </div>
 
-            <button class="btn btn-primary w-100 py-2"  id="signinBtn">
+            <button class="btn btn-primary w-100 py-2" id="signinBtn">
                 Sign in
             </button>
 
@@ -189,7 +201,7 @@ session_status();
             <button class="btn btn-primary w-100 py-2" id="signupBtn">
                 Sign in
             </button>
-            
+
             <div class="text-center py-2">
                 <p>already have an account? <a class="text-decoration-none link-secondary" id="togglesignup">sing in</a></p>
             </div>
