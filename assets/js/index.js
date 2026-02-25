@@ -1,3 +1,6 @@
+const togglesignup      = document.getElementById('togglesignup');
+const togglesignin      = document.getElementById('togglesignin');
+
 const changeview = () => {
     document.getElementById('signupBox').classList.toggle('d-none');
     document.getElementById('signinBox').classList.toggle('d-none');
