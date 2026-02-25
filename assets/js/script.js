@@ -332,36 +332,36 @@ const loadCart = async () => {
 // }
 
 // --ONLOAD--
-window.onload = () => {
-    if (document.body.id === "adminUserPage") {
-        const page = document.body.dataset.page;
-        loadUsers(page);
-    }
+// window.onload = () => {
+//     if (document.body.id === "adminUserPage") {
+//         const page = document.body.dataset.page;
+//         loadUsers(page);
+//     }
 
-    if (document.body.id === "adminProductPage") {
-        const page = document.body.dataset.page;
-        loadProdcut(page);
-    }
+//     if (document.body.id === "adminProductPage") {
+//         const page = document.body.dataset.page;
+//         loadProdcut(page);
+//     }
 
-    if (document.body.id === "adminStockPage") {
-        const page = document.body.dataset.page;
-        loadStock(page);
-    }
+//     if (document.body.id === "adminStockPage") {
+//         const page = document.body.dataset.page;
+//         loadStock(page);
+//     }
 
-    if (document.body.id === 'adSearch') {
-        const page = document.body.dataset.page;
-        search(page);
-    }
+//     if (document.body.id === 'adSearch') {
+//         const page = document.body.dataset.page;
+//         search(page);
+//     }
 
-    if (document.body.id === 'cart') {
-        loadCart();
-    }
+//     if (document.body.id === 'cart') {
+//         loadCart();
+//     }
 
-    if (document.body.id === 'adminDashboard') {
-        console.log('working');
-        loadChart();
-    }
-};
+//     if (document.body.id === 'adminDashboard') {
+//         console.log('working');
+//         loadChart();
+//     }
+// };
 
 const changeUserStatus = async (userId, newStatus, page) => {
     const form = new FormData();
