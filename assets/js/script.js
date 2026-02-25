@@ -297,39 +297,39 @@ const loadCart = async () => {
     }
 }
 
-const loadChart = async () => {
-    const ctx = document.getElementById('chart1');
+// const loadChart = async () => {
+//     const ctx = document.getElementById('chart1');
 
-    const direction = `/Online-Store/pages/admin/loadChartProcess.php`;
-    const method = 'GET';
-    const isAsync = true;
+//     const direction = `/Online-Store/pages/admin/loadChartProcess.php`;
+//     const method = 'GET';
+//     const isAsync = true;
 
-    try {
-        const responseText = await formSubmitHandler(null, direction, method, isAsync);
-        const json = JSON.parse(responseText);
+//     try {
+//         const responseText = await formSubmitHandler(null, direction, method, isAsync);
+//         const json = JSON.parse(responseText);
 
-        new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: json.labels,
-                datasets: [{
-                    label: '# of Quentity',
-                    data: json.data,
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        beginAtZero: true
-                    }
-                }
-            }
-        });
-    } catch (error) {
-        alert(`Error: ${error}`);
-    }
-}
+//         new Chart(ctx, {
+//             type: 'line',
+//             data: {
+//                 labels: json.labels,
+//                 datasets: [{
+//                     label: '# of Quentity',
+//                     data: json.data,
+//                     borderWidth: 1
+//                 }]
+//             },
+//             options: {
+//                 scales: {
+//                     y: {
+//                         beginAtZero: true
+//                     }
+//                 }
+//             }
+//         });
+//     } catch (error) {
+//         console.log(`Error: ${error}`);
+//     }
+// }
 
 // --ONLOAD--
 window.onload = () => {
